@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     private Vector2 currentVelocity = new Vector2(0f,0f);
     private float acceleration = 0.01f;
-    private float maxSpeed = 1f;
+    private float maxSpeed = 2f;
 
     // Start is called before the first frame update
     void Start()

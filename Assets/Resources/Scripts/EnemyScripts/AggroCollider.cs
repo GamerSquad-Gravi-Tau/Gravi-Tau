@@ -6,6 +6,8 @@ public class AggroCollider : MonoBehaviour
 {
     //Nothing in here except calling 
     private void OnTriggerEnter2D(Collider2D other) {
-        gameObject.transform.parent.GetComponent<EnemyChase>().EnterAggroState(other.gameObject.transform);
+        if(other.gameObject.name=="PlayerShip"){
+            gameObject.transform.parent.GetComponent<EnemyChase>().EnterAggroState(other.gameObject.transform);
+        }
     }
 }

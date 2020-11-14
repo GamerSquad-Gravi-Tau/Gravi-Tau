@@ -8,6 +8,10 @@ public class PlayerMovement : MonoBehaviour
     private float acceleration = 0.01f;
     private float maxSpeed = 2f;
 
+    private float boostSpeed = 6f;
+    private float boostDelay = 1f;
+    private float boostStart = 0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,9 +41,22 @@ public class PlayerMovement : MonoBehaviour
             currentVelocity = currentVelocity.normalized * maxSpeed;
         }
 
+        //Boost mode
+        if(Input.GetKey(KeyCode.LeftControl)){
+            boostStart+=Time.smoothDeltaTime;
+        }else{
+            boostStart=0f;
+        }
+
+        Vector2 boostVel;
+        if(boostStart>=boostDelay){
+            boostVel=faceVector.normalized*boostSpeed;
+        }else{
+            boostVel=Vector2.zero;
+        }
 
         //transform!
-        Vector3 deltaPos = currentVelocity * Time.smoothDeltaTime;
+        Vector3 deltaPos = (currentVelocity+boostVel)*Time.smoothDeltaTime;
         gameObject.transform.position += deltaPos;
 
     }
@@ -72,5 +89,10 @@ public class PlayerMovement : MonoBehaviour
                 currentVelocity=currentVelocity.normalized *0.2f;
             }
         }
+    }
+    private void OnTriggerExit2D(Collider2D other) {
+        if(other.gameObject.name=="WorldBound"){
+            Debug.Log("Left play area");
+        }    
     }
 }

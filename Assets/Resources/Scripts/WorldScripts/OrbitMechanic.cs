@@ -37,8 +37,8 @@ public class OrbitMechanic : MonoBehaviour
     }
 
     private void randomStartLocation(){
-        float randomAngle = Random.Range(0,2*Mathf.PI);
-        Vector3 nextPos = new Vector3(orbitDistance*Mathf.Cos(randomAngle),orbitDistance*Mathf.Sin(randomAngle),0)*Time.smoothDeltaTime;
+        float randomAngle = Random.value*2f*Mathf.PI;
+        Vector3 nextPos = new Vector3(orbitDistance*Mathf.Cos(randomAngle),orbitDistance*Mathf.Sin(randomAngle),0);
         gameObject.transform.position = nextPos;
     }
 

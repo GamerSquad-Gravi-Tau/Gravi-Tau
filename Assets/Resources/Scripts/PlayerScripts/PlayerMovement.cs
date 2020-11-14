@@ -42,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //Boost mode
-        if(Input.GetKey(KeyCode.LeftControl)){
+        if(Input.GetKey(KeyCode.LeftShift)){
             boostStart+=Time.smoothDeltaTime;
         }else{
             boostStart=0f;
@@ -61,6 +61,10 @@ public class PlayerMovement : MonoBehaviour
 
     }
     
+    public Vector2 getVelocity(){
+        return currentVelocity;
+    }
+
 
     private void OnTriggerStay2D(Collider2D other) {
         if(other.gameObject.tag == "GravityCollider"){

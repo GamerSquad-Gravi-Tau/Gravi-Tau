@@ -12,10 +12,12 @@ public class EnemyChase : MonoBehaviour
     };
 
     private ChaseEnemyState current_state;
-    private Transform playerTransform;
     private CameraBounds boundObject;
 
     private Vector2 currentVelocity;
+
+    private Transform playerTransform;
+    private PlayerMovement playerMove;
 
     public float maxChaseDistance = 3f;
     public float hoverdistance = 1.2f;
@@ -66,7 +68,9 @@ public class EnemyChase : MonoBehaviour
     }
 
     private void aggroUpdate(){
+        Vector2 playerVelocity = playerMove.getVelocity();
         Vector2 difference = playerTransform.position - gameObject.transform.position;
+        difference+=(playerVelocity*predictionTime);
         gameObject.transform.up = Vector3.Lerp(gameObject.transform.up,difference.normalized,0.1f);
 
         if(Time.time-lastShot > shotTimer){
@@ -104,8 +108,10 @@ public class EnemyChase : MonoBehaviour
 
 
 
-    public void EnterAggroState(Transform player){
-        playerTransform=player;
+    public void EnterAggroState(GameObject player){
+        playerTransform=player.transform;
+        playerMove = player.GetComponent<PlayerMovement>();
+
         current_state=ChaseEnemyState.aggro;
     }
 

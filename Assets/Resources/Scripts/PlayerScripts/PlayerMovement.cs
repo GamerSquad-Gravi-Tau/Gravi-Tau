@@ -55,6 +55,10 @@ public class PlayerMovement : MonoBehaviour
             boostVel=Vector2.zero;
         }
 
+        if(boostVel.magnitude>0){
+            currentVelocity=boostVel.normalized*maxSpeed;
+        }
+
         //transform!
         Vector3 deltaPos = (currentVelocity+boostVel)*Time.smoothDeltaTime;
         gameObject.transform.position += deltaPos;

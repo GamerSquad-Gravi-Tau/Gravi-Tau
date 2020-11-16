@@ -120,9 +120,14 @@ public class EnemyChase : MonoBehaviour
             //Hover around hoverdistance
             Vector2 curPos = gameObject.transform.position;
             Vector2 targetPos = curPos + difference.normalized*hoverdistance;
-            
-            //Kinematics
-            Vector2 calcAccel = (2/(predictionTime*predictionTime))*(targetPos-curPos-currentVelocity*predictionTime);
+
+            Vector2 calcAccel;
+            if(difference.magnitude>hoverdistance){
+                //Kinematics
+                calcAccel = (2/(predictionTime*predictionTime))*(targetPos-curPos-currentVelocity*predictionTime);
+            }else{
+                calcAccel = currentVelocity-playerVelocity;
+            }
             
             if(calcAccel.magnitude>maxAccel){
                 calcAccel=calcAccel.normalized*maxAccel;

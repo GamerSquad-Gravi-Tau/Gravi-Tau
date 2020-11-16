@@ -14,6 +14,7 @@ public class SpawnWithSpace : MonoBehaviour
             e.transform.position = gameObject.transform.position;
             e.transform.position += gameObject.transform.up*3f;
         }
-        
     }
+
+
 }

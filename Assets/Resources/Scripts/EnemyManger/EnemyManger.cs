@@ -10,6 +10,7 @@ public class EnemyManger : MonoBehaviour
     Vector3 BlackHoleTwo = new Vector3(100, 0, 0);
     private int SafeSizeOne = 10;
     int OneTime = 0;
+    int OneBoss = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +26,12 @@ public class EnemyManger : MonoBehaviour
             SpawnSpaceTurret();
             SpawnSpaceFleet();
             OneTime++;
+        }
+        if (this.transform.childCount <= 100 && OneBoss == 0)
+        {
+            GameObject NewBoss = Instantiate(Resources.Load("Prefabs/Boss") as GameObject);
+            NewBoss.transform.position = GetRandomPosition();
+            OneBoss++;
         }
     }
 

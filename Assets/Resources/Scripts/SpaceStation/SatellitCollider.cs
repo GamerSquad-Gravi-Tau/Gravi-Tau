@@ -8,7 +8,7 @@ public class SatellitCollider : MonoBehaviour
     {
         if (collision.gameObject.name == "PlayerShip")
         {
-            Debug.Log("Destory");
+            //Debug.Log("Destory");
             Destroy(this.transform.parent.gameObject);
         }
     }

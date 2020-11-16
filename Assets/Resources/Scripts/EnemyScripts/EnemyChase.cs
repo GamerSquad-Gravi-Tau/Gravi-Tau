@@ -30,10 +30,13 @@ public class EnemyChase : MonoBehaviour
     private float maxAccel = .1f;
     private float maxSpeed = 1.5f;
 
+
     private float stateTime = 0f;
     private float stationaryTimer = 2f;
     
 
+
+    public bool despawn = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -59,7 +62,10 @@ public class EnemyChase : MonoBehaviour
                 patrolUpdate();
                 break;    
         }
-        CheckDespawn();
+        if (despawn)
+        {
+            CheckDespawn();
+        }
         Vector3 nextVel = currentVelocity;
         gameObject.transform.position+=nextVel*Time.smoothDeltaTime;
     }

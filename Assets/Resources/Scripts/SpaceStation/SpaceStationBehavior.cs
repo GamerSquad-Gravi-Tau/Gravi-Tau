@@ -23,6 +23,9 @@ public class SpaceStationBehavior : MonoBehaviour
     GameObject SatellitThree;
     GameObject SatellitFour;
 
+    GameObject TurretRight;
+    GameObject TurretLeft;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +43,14 @@ public class SpaceStationBehavior : MonoBehaviour
         SatellitTwo.transform.position = this.transform.position + new Vector3(-1f, 1f, 0f);
         SatellitThree.transform.position = this.transform.position + new Vector3(-1f, -1f, 0f);
         SatellitFour.transform.position = this.transform.position + new Vector3(1f, -1f, 0f);
+
+        TurretRight = Instantiate(Resources.Load("Prefabs/SpaceStationTurretRight") as GameObject);
+        TurretRight.transform.parent = this.gameObject.transform;
+        TurretRight.transform.position = this.transform.position + new Vector3(1f, 0f, 0f);
+
+        TurretLeft = Instantiate(Resources.Load("Prefabs/SpaceStationTurretLeft") as GameObject);
+        TurretLeft.transform.parent = this.gameObject.transform;
+        TurretLeft.transform.position = this.transform.position + new Vector3(-1f, 0f, 0f);
     }
 
     // Update is called once per frame
@@ -49,8 +60,9 @@ public class SpaceStationBehavior : MonoBehaviour
         if (StartAttack)
         {
             SpwanFourEnemyPerTenSeconds();
-            
         }
+
+        SetTurretPosition();
     }
 
     private void SpwanFourEnemyPerTenSeconds()
@@ -90,5 +102,11 @@ public class SpaceStationBehavior : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+    }
+
+    private void SetTurretPosition()
+    {
+        TurretRight.GetComponentInChildren<SpaceStationTurret>().MyStationPosition = this.transform.position;
+        TurretLeft.GetComponentInChildren<SpaceStationTurret>().MyStationPosition = this.transform.position;
     }
 }

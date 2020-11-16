@@ -9,6 +9,13 @@ public class SpaceStationTurret : MonoBehaviour
     public bool StartActive = false;
 
     public Vector3 MyStationPosition;
+
+    public int TurretHealth;
+
+    private float ShootTimeStamp;
+    private float ShootInterval = 5f;
+    private float LaserSpeed = 50f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +38,12 @@ public class SpaceStationTurret : MonoBehaviour
         if (StartActive)
         {
             FactToPlayer();
+            if (AttackCoolDown())
+            {
+                Attack();
+                Attack();
+                Attack();
+            }
         }
 
         UpdateMyPosition();
@@ -55,6 +68,21 @@ public class SpaceStationTurret : MonoBehaviour
         {
             this.transform.position = MyStationPosition + new Vector3(-1f, 0f, 0f);
         }
+    }
+
+    private void Attack()
+    {
+        GameObject ShootLaser;
+        ShootLaser = Instantiate(Resources.Load("Prefabs/EnemyTurretLaser") as GameObject);
+        ShootLaser.transform.position = this.transform.position;
+        ShootLaser.transform.up = this.transform.up;
+        ShootTimeStamp = Time.realtimeSinceStartup;
+    }
+
+    private bool AttackCoolDown()
+    {
+        float num = Time.realtimeSinceStartup - ShootTimeStamp;
+        return num >= ShootInterval;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

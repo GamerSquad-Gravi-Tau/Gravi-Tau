@@ -19,7 +19,7 @@ public class EnemyChase : MonoBehaviour
     private Transform playerTransform;
     private PlayerMovement playerMove;
 
-    public float maxChaseDistance = 3f;
+    public float maxChaseDistance = 5f;
     public float hoverdistance = 1.2f;
     public float shotTimer = 0.75f;
 

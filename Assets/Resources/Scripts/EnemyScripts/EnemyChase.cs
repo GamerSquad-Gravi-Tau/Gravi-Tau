@@ -19,20 +19,27 @@ public class EnemyChase : MonoBehaviour
     private Transform playerTransform;
     private PlayerMovement playerMove;
 
+    private Vector2 spawnPos;
+
     public float maxChaseDistance = 5f;
     public float hoverdistance = 1.2f;
     public float shotTimer = 0.75f;
 
     private float lastShot = 0f;
-    private float predictionTime = .1f;
-    private float maxAccel = .01f;
+    public float predictionTime = .1f;
+    private float maxAccel = .1f;
     private float maxSpeed = 1.5f;
+
+    private float stateTime = 0f;
+    private float stationaryTimer = 2f;
     
 
     // Start is called before the first frame update
     void Start()
     {
         boundObject = Camera.main.GetComponent<CameraBounds>();
+        spawnPos = gameObject.transform.localPosition;
+        current_state = ChaseEnemyState.travel;
     }
 
     // Update is called once per frame
@@ -59,11 +66,32 @@ public class EnemyChase : MonoBehaviour
 
 
     private void stationaryUpdate(){
-        
+        if(stateTime>stationaryTimer){
+            current_state=ChaseEnemyState.travel;
+        }
+        stateTime += Time.smoothDeltaTime;
         currentVelocity=Vector2.Lerp(currentVelocity,Vector2.zero,.01f);
     }
 
     private void travelUpdate(){
+        //Go back to spawn position
+        Vector2 curPos = gameObject.transform.localPosition;
+        Vector2 dif = curPos-spawnPos;
+        
+        gameObject.transform.up = Vector3.Lerp(gameObject.transform.up,-1*dif.normalized,0.1f);
+
+        //Kinematics
+        Vector2 calcAccel = (2/(predictionTime*predictionTime))*(spawnPos-curPos-currentVelocity*predictionTime);   
+        
+        if(calcAccel.magnitude>maxAccel){
+            calcAccel=calcAccel.normalized*maxAccel*10;
+        }
+
+        currentVelocity+=calcAccel;
+        if(currentVelocity.magnitude>maxSpeed*0.75f){
+            currentVelocity=currentVelocity.normalized*maxSpeed;
+        }
+
 
     }
 
@@ -79,6 +107,7 @@ public class EnemyChase : MonoBehaviour
 
         if(difference.magnitude>maxChaseDistance){
             //player left chase distance. Return to another state
+            stateTime=0f;
             current_state=ChaseEnemyState.stationary;
 
         }else{

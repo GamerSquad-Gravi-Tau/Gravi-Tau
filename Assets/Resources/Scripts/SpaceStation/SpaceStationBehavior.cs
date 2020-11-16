@@ -58,15 +58,19 @@ public class SpaceStationBehavior : MonoBehaviour
         if (CanSpwanEnemy())
         {
             GameObject NewEnemyOne = Instantiate(Resources.Load("Prefabs/ChaseEnemy") as GameObject);
+            NewEnemyOne.transform.parent = gameObject.transform;
             NewEnemyOne.transform.position = this.transform.position + new Vector3(1f, 1f, 0f);
 
             GameObject NewEnemyTwo = Instantiate(Resources.Load("Prefabs/ChaseEnemy") as GameObject);
+            NewEnemyTwo.transform.parent = gameObject.transform;
             NewEnemyTwo.transform.position = this.transform.position + new Vector3(-1f, 1f, 0f);
 
             GameObject NewEnemyThree = Instantiate(Resources.Load("Prefabs/ChaseEnemy") as GameObject);
+            NewEnemyThree.transform.parent = gameObject.transform;
             NewEnemyThree.transform.position = this.transform.position + new Vector3(-1f, -1f, 0f);
 
             GameObject NewEnemyFour = Instantiate(Resources.Load("Prefabs/ChaseEnemy") as GameObject);
+            NewEnemyFour.transform.parent = gameObject.transform;
             NewEnemyFour.transform.position = this.transform.position + new Vector3(1f, -1f, 0f);
 
             EnemyReserve -= 4;

@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StartActive: 0
+  TurretHealth: 0
 --- !u!61 &5870914591397615999
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -170,7 +171,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 19
+  m_Radius: 25
 --- !u!114 &5870914591723165079
 MonoBehaviour:
   m_ObjectHideFlags: 0

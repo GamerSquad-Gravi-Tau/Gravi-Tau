@@ -132,6 +132,8 @@ MonoBehaviour:
   maxChaseDistance: 5
   hoverdistance: 1.2
   shotTimer: 0.75
+  predictionTime: 0.1
+  despawn: 1
 --- !u!50 &4894074562385220361
 Rigidbody2D:
   serializedVersion: 4
@@ -290,6 +292,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1477285033969964608, guid: 2ef8be495c1cf604687f8664bffdf4f9,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1477285033969964608, guid: 2ef8be495c1cf604687f8664bffdf4f9,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1477285033969964609, guid: 2ef8be495c1cf604687f8664bffdf4f9,
         type: 3}

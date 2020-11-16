@@ -7,17 +7,35 @@ public class PlayerWeaponsController : MonoBehaviour
     public Transform firePoint;
     public GameObject homing;
     public GameObject bullet;
+
+    public float timeBetweenBullet = .1f;
+    private float bulletCooldown = .1f;
+
+    public float timeBetweenHoming = 1f;
+    private float homingCooldown = 1f;
+
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if(bulletCooldown>timeBetweenBullet)
         {
-            shootBullet();
+            if (Input.GetMouseButton(0))
+            {
+                shootBullet();
+                bulletCooldown=0f;
+            }
         }
-        if (Input.GetMouseButtonDown(1))
+        bulletCooldown+=Time.smoothDeltaTime;
+
+        if(homingCooldown>timeBetweenHoming)
         {
-            shootHoming();
+            if (Input.GetMouseButton(1))
+            {
+                shootHoming();
+                homingCooldown=0f;
+            }
         }
+        homingCooldown+=Time.smoothDeltaTime;
     }
 
     void shootBullet()

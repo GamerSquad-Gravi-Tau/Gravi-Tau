@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 4061125478517894920}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.003, y: 0.001, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
+  m_LocalScale: {x: 0.025, y: 0.025, z: 1}
   m_Children: []
   m_Father: {fileID: 4061125479529590867}
   m_RootOrder: 0
@@ -70,7 +70,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a556f094f990b9b4180ff2301773ca0e, type: 3}
+  m_Sprite: {fileID: 21300002, guid: c4d8ed7c5adcd0e489c81b34c69fa753, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 4894074562385220361}
   - component: {fileID: 3017768988159587245}
   - component: {fileID: 2569668630123362183}
-  - component: {fileID: 8835914161621835568}
+  - component: {fileID: 5782752737753193202}
   m_Layer: 0
   m_Name: ChaseEnemy
   m_TagString: Enemy
@@ -185,7 +185,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e381b6510726c4479ee2878611be5bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!60 &8835914161621835568
+  health: 0
+--- !u!60 &5782752737753193202
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -210,12 +211,17 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.00003618002, y: 0.12152517}
-      - {x: -0.04147664, y: 0.031826228}
-      - {x: -0.088816226, y: -0.028767854}
-      - {x: -0.0099951625, y: -0.12455821}
-      - {x: 0.09444156, y: -0.05344546}
-      - {x: 0.03698927, y: 0.02225089}
+    - - {x: 0.035732493, y: 0.07923228}
+      - {x: 0.034848165, y: 0.10776292}
+      - {x: -0.004684441, y: 0.15680015}
+      - {x: -0.029902844, y: 0.12005185}
+      - {x: -0.06919062, y: -0.008908838}
+      - {x: -0.08420411, y: -0.033781417}
+      - {x: -0.065478444, y: -0.13910174}
+      - {x: 0.057603024, y: -0.1427845}
+      - {x: 0.05962789, y: -0.13461632}
+      - {x: 0.075918324, y: -0.039025486}
+      - {x: 0.04775271, y: 0.08186106}
 --- !u!1 &4061125479548454149
 GameObject:
   m_ObjectHideFlags: 0

@@ -66,6 +66,8 @@ public class AsteriodMovement : MonoBehaviour
             if (!destroyed)
             {
                 player.TakeDamage(50);
+                Destroy(gameObject);
+                /*
                 //this.GetComponent<Collider2D>().enabled = false;
                 Vector3 OriginalPosition = this.transform.localPosition;
                 Vector2 ShakeMagnitude = new Vector2((collision.GetComponent<PlayerMovement>().tempShipSpeed) / 50,
@@ -76,6 +78,7 @@ public class AsteriodMovement : MonoBehaviour
                 explode.Play();
                 destroyed = true;
                 asteriodSpeed = 0;
+                */
             }
         }
 

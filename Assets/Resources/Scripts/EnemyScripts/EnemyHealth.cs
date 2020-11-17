@@ -32,6 +32,7 @@ public class EnemyHealth : MonoBehaviour
 
     private void Die()
     {
+        ScoreScript.IncScore(100);
         Destroy(gameObject);
     }
 }

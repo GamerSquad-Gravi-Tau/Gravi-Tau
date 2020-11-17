@@ -5,8 +5,10 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private Vector2 currentVelocity = new Vector2(0f,0f);
+
     private float acceleration = 7f;
     private float maxSpeed = 3f;
+
     public float tempShipSpeed = 0.0f;
 
     private float boostSpeed = 6f;

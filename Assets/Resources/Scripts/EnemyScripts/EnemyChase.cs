@@ -27,7 +27,7 @@ public class EnemyChase : MonoBehaviour
 
     private float lastShot = 0f;
     public float predictionTime = .1f;
-    private float maxAccel = .1f;
+    private float maxAccel = 7f;
     private float maxSpeed = 1.5f;
 
 
@@ -93,7 +93,7 @@ public class EnemyChase : MonoBehaviour
             calcAccel=calcAccel.normalized*maxAccel*10;
         }
 
-        currentVelocity+=calcAccel;
+        currentVelocity+=calcAccel*Time.smoothDeltaTime;
         if(currentVelocity.magnitude>maxSpeed*0.75f){
             currentVelocity=currentVelocity.normalized*maxSpeed;
         }
@@ -133,7 +133,7 @@ public class EnemyChase : MonoBehaviour
                 calcAccel=calcAccel.normalized*maxAccel;
             }
 
-            currentVelocity+=calcAccel;
+            currentVelocity+=calcAccel*Time.smoothDeltaTime;
             if(currentVelocity.magnitude>maxSpeed){
                 currentVelocity=currentVelocity.normalized*maxSpeed;
             }

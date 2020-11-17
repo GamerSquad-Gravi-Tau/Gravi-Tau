@@ -12,8 +12,8 @@ public class AsteriodMovement : MonoBehaviour
     private ShakePosition AsteriodShake = new ShakePosition(10f, 1f);
     private Transform parentTransform;
     private bool destroyed = false;
-    private int currentFrames = 0;
-    private int totalFrames = 60 * 10;
+    private float currentTime = 0f;
+    private float totalTime = 10f;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +22,8 @@ public class AsteriodMovement : MonoBehaviour
         //parentTransform = this.transform.parent;
         //transform.localPosition = parentTransform.transform.localPosition;
         //parentTransform = gameObject.transform.parent.gameObject.transform;
-        explode.transform.localPosition = this.transform.localPosition;
+        explode.transform.position = Vector3.zero;
+        parentTransform = gameObject.transform.parent;
     }
 
     // Update is called once per frame
@@ -35,12 +36,16 @@ public class AsteriodMovement : MonoBehaviour
             transform.localPosition += ((-asteriodSpeed * Time.smoothDeltaTime) * transform.right);
         }
 
-        if (destroyed && currentFrames < totalFrames)
+        if(destroyed && currentTime==0f){
+            explode.transform.position = gameObject.transform.position;
+        }
+
+        if (destroyed && currentTime < totalTime)
         {
             changeColor();
-            currentFrames++;
+            currentTime+=Time.smoothDeltaTime;
         }
-        if (currentFrames >= totalFrames)
+        if (currentTime >= totalTime)
         {
             GameObject asteriod = Instantiate(Resources.Load("Prefabs/Asteriod") as GameObject);
             asteriod.transform.parent = parentTransform;
@@ -60,6 +65,7 @@ public class AsteriodMovement : MonoBehaviour
             //float shipSpeed = collision.GetComponent<PlayerMovement>().tempShipSpeed;
             if (!destroyed)
             {
+                player.TakeDamage(50);
                 //this.GetComponent<Collider2D>().enabled = false;
                 Vector3 OriginalPosition = this.transform.localPosition;
                 Vector2 ShakeMagnitude = new Vector2((collision.GetComponent<PlayerMovement>().tempShipSpeed) / 50,
@@ -73,12 +79,6 @@ public class AsteriodMovement : MonoBehaviour
             }
         }
 
-        PlayerHealth p = collision.GetComponent<PlayerHealth>();
-        if (p != null)
-        {
-            p.TakeDamage(50);
-            Destroy(gameObject);
-        }
 
         AsteriodMovement otherAsteriod = collision.GetComponent<AsteriodMovement>();
         if (otherAsteriod != null)

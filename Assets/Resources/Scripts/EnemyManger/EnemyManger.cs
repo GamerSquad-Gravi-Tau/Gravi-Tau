@@ -27,7 +27,7 @@ public class EnemyManger : MonoBehaviour
             SpawnSpaceFleet();
             OneTime++;
         }
-        if (this.transform.childCount <= 100 && OneBoss == 0)
+        if (this.transform.childCount <= 60 && OneBoss == 0)
         {
             GameObject NewBoss = Instantiate(Resources.Load("Prefabs/Boss") as GameObject);
             NewBoss.transform.position = GetRandomPosition();
@@ -37,7 +37,7 @@ public class EnemyManger : MonoBehaviour
 
     private void SpawnSingleEnemy()
     {
-        for (int i = 0; i < 50; i++)
+        for (int i = 0; i < 10; i++)
         {
             GameObject NewEnemyOne = Instantiate(Resources.Load("Prefabs/ChaseEnemy") as GameObject);
             NewEnemyOne.GetComponent<EnemyChase>().despawn = false;
@@ -48,7 +48,7 @@ public class EnemyManger : MonoBehaviour
 
     private void SpawnSpaceTurret()
     {
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < 10; i++)
         {
             GameObject NewEnemyTurret = Instantiate(Resources.Load("Prefabs/SpaceAITurret") as GameObject);
             NewEnemyTurret.transform.parent = this.gameObject.transform;
@@ -58,7 +58,7 @@ public class EnemyManger : MonoBehaviour
 
     private void SpawnFourEnemyWithTurret()
     {
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < 10; i++)
         {
             Vector3 R = GetRandomPosition();
 

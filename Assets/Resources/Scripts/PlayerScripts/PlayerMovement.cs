@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private Vector2 currentVelocity = new Vector2(0f,0f);
-    private float acceleration = 0.01f;
-    private float maxSpeed = 2f;
+    private float acceleration = 7f;
+    private float maxSpeed = 3f;
     public float tempShipSpeed = 0.0f;
 
     private float boostSpeed = 6f;
@@ -29,13 +29,13 @@ public class PlayerMovement : MonoBehaviour
 
         //Calculate Velocity change
         if(Input.GetKey(KeyCode.W))
-            currentVelocity.y+=acceleration;
+            currentVelocity.y+=acceleration*Time.smoothDeltaTime;
         if(Input.GetKey(KeyCode.A))
-            currentVelocity.x-=acceleration;
+            currentVelocity.x-=acceleration*Time.smoothDeltaTime;
         if(Input.GetKey(KeyCode.S))
-            currentVelocity.y-=acceleration;
+            currentVelocity.y-=acceleration*Time.smoothDeltaTime;
         if(Input.GetKey(KeyCode.D))
-            currentVelocity.x+=acceleration;
+            currentVelocity.x+=acceleration*Time.smoothDeltaTime;
         
         //Normalize if above maxSpeed
         if(currentVelocity.magnitude>maxSpeed){

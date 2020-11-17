@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 currentVelocity = new Vector2(0f,0f);
     private float acceleration = 0.01f;
     private float maxSpeed = 2f;
+    public float tempShipSpeed = 0.0f;
 
     private float boostSpeed = 6f;
     private float boostDelay = 1f;
@@ -96,6 +97,12 @@ public class PlayerMovement : MonoBehaviour
             if(currentVelocity.magnitude>0.2f){
                 currentVelocity=currentVelocity.normalized *0.2f;
             }
+        }
+        AsteriodMovement asteriod = other.GetComponent<AsteriodMovement>();
+        if (asteriod != null)
+        {
+            tempShipSpeed = acceleration;
+            acceleration = -acceleration / 5f;
         }
     }
     private void OnTriggerExit2D(Collider2D other) {

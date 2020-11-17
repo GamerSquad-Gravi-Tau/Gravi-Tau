@@ -31,6 +31,7 @@ public class BossHealth : MonoBehaviour
 
     private void Die()
     {
+        ScoreScript.IncScore(200);
         Destroy(gameObject);
     }
 }

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8172912153434512741}
   - component: {fileID: 4198180145025502181}
   - component: {fileID: 1907444509291358169}
-  - component: {fileID: 5161068568697534104}
+  - component: {fileID: 1403513401040050809}
   m_Layer: 0
   m_Name: Asteriod
   m_TagString: Asteriod
@@ -137,8 +137,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!60 &5161068568697534104
-PolygonCollider2D:
+--- !u!58 &1403513401040050809
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -151,35 +151,8 @@ PolygonCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.14, y: 1.74}
-    newSize: {x: 2.14, y: 1.74}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.65, y: -0.83}
-      - {x: 1.0699999, y: -0.32999998}
-      - {x: 1.0699999, y: 0.11}
-      - {x: 0.90999997, y: 0.37}
-      - {x: 0.47, y: 0.65}
-      - {x: 0.22999999, y: 0.66999996}
-      - {x: 0.17, y: 0.87}
-      - {x: -0.14999999, y: 0.87}
-      - {x: -0.19, y: 0.81}
-      - {x: -0.59, y: 0.78999996}
-      - {x: -0.66999996, y: 0.71}
-      - {x: -0.65, y: 0.61}
-      - {x: -1.0699999, y: 0.21}
-      - {x: -1.0699999, y: -0.47}
-      - {x: -0.93, y: -0.65}
-      - {x: -0.71, y: -0.78999996}
-      - {x: -0.63, y: -0.87}
-      - {x: 0.55, y: -0.87}
+  serializedVersion: 2
+  m_Radius: 0.8
 --- !u!1001 &7557954822624472933
 PrefabInstance:
   m_ObjectHideFlags: 0

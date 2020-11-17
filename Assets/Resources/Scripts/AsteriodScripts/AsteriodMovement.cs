@@ -59,9 +59,9 @@ public class AsteriodMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        PlayerHealth player = collision.GetComponent<PlayerHealth>();
-        if (player != null)
+        if (collision.gameObject.name == "PlayerShip")
         {
+            PlayerHealth player = collision.GetComponent<PlayerHealth>();
             //float shipSpeed = collision.GetComponent<PlayerMovement>().tempShipSpeed;
             if (!destroyed)
             {

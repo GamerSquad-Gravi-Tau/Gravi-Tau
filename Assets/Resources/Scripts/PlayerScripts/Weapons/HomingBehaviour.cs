@@ -60,7 +60,7 @@ public class HomingBehaviour : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         EnemyHealth e = collision.GetComponent<EnemyHealth>();
-        SpaceStationHealth s = collision.GetComponent<SpaceStationHealth>();
+        BossHealth s = collision.GetComponent<BossHealth>();
         if (e != null)
         {
             e.TakeDamage(damage);

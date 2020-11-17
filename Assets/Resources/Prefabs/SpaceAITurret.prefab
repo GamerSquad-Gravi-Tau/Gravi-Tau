@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5870914591397615996}
   - component: {fileID: 5870914591397615998}
   - component: {fileID: 5870914591397615999}
+  - component: {fileID: -3303274464542884471}
   m_Layer: 0
   m_Name: SpaceAITurret
   m_TagString: Untagged
@@ -124,6 +125,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.33, y: 3}
   m_EdgeRadius: 0
+--- !u!114 &-3303274464542884471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5870914591397615995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e381b6510726c4479ee2878611be5bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
 --- !u!1 &5870914591723165076
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private Vector2 currentVelocity = new Vector2(0f,0f);
-
+    private static Vector2 currVel;
     private float acceleration = 7f;
     private float maxSpeed = 3f;
 
@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        currVel = currentVelocity;
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,Input.mousePosition.y,0f));
         mousePos.z=gameObject.transform.position.z;
         Vector3 faceVector = mousePos-gameObject.transform.position;
@@ -72,6 +73,10 @@ public class PlayerMovement : MonoBehaviour
         return currentVelocity;
     }
 
+    public static Vector2 retVel()
+    {
+        return currVel;
+    }
 
     private void OnTriggerStay2D(Collider2D other) {
         if(other.gameObject.tag == "GravityCollider"){

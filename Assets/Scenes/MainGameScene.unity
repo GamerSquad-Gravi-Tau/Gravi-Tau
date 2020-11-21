@@ -4781,7 +4781,7 @@ MonoBehaviour:
   firePoint: {fileID: 1330802573}
   homing: {fileID: 4664069927767738402, guid: 870385e29ac047a46ada842aba6bba0e, type: 3}
   bullet: {fileID: 8083898890625504468, guid: d81ab9b52c039fc4590f9c0902c04b11, type: 3}
-  timeBetweenBullet: 0.1
+  timeBetweenBullet: 0.5
   timeBetweenHoming: 1
 --- !u!114 &1325549415
 MonoBehaviour:

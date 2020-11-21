@@ -17,7 +17,7 @@ public class EnemyChase : MonoBehaviour
     private Vector2 currentVelocity;
 
     private Transform playerTransform;
-    private PlayerMovement playerMove;
+    private static PlayerMovement playerMove;
 
     private Vector2 spawnPos;
 
@@ -102,7 +102,8 @@ public class EnemyChase : MonoBehaviour
     }
 
     private void aggroUpdate(){
-        Vector2 playerVelocity = playerMove.getVelocity();
+        // had to change from using playermove instance because it would not build otherwise
+        Vector2 playerVelocity = PlayerMovement.getVelocity();
         Vector2 difference = playerTransform.position - gameObject.transform.position;
         difference+=(playerVelocity*predictionTime);
         gameObject.transform.up = Vector3.Lerp(gameObject.transform.up,difference.normalized,0.1f);

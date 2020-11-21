@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private Vector2 currentVelocity = new Vector2(0f,0f);
+    private static Vector2 currentVelocity = new Vector2(0f,0f);
 
     private float acceleration = 7f;
     private float maxSpeed = 3f;
@@ -68,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
 
     }
     
-    public Vector2 getVelocity(){
+    public static Vector2 getVelocity(){
         return currentVelocity;
     }
 

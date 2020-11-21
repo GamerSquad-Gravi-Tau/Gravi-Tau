@@ -11,7 +11,14 @@ public class BulletBehaviour : MonoBehaviour
     void Start()
     {
         damage = 20;
-        rb.velocity = transform.up * speed;
+        /*Vector3 tempVel = transform.up * speed;
+        if (PlayerMovement.getVelocity().x >= 0 &&
+            PlayerMovement.getVelocity().y >= 0)
+        {
+            tempVel += (Vector3)PlayerMovement.getVelocity();
+        }
+        rb.velocity = tempVel; */
+        rb.velocity = transform.up * speed + (Vector3)PlayerMovement.getVelocity();
     }
 
     private void OnBecameInvisible()

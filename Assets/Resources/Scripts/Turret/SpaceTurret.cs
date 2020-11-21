@@ -9,7 +9,6 @@ public class SpaceTurret : MonoBehaviour
 
     public bool StartActive = false;
 
-    public int TurretHealth;
     private float ShootTimeStamp;
     private float ShootInterval = 5f;
     private float LaserSpeed = 50f;
@@ -54,10 +53,5 @@ public class SpaceTurret : MonoBehaviour
     {
         float num = Time.realtimeSinceStartup - ShootTimeStamp;
         return num >= ShootInterval;
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        //For body collider
     }
 }

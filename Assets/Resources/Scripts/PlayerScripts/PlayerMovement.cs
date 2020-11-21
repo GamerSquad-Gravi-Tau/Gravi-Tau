@@ -11,14 +11,22 @@ public class PlayerMovement : MonoBehaviour
 
     public float tempShipSpeed = 0.0f;
 
-    private float boostSpeed = 6f;
-    private float boostDelay = 1f;
-    private float boostStart = 0f;
+    public float boostSpeed = 6f;
+    public float boostDelay = 1f;
+    public float boostStart = 0f;
+    public bool changeBoost = false;
+    public float boostChangeTimeStamp = 0f;
+    public float boostChangeInterval = 5f;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        acceleration = 7f;
+        maxSpeed = 3f;
+        tempShipSpeed = 0.0f;
+        boostSpeed = 6f;
+        boostDelay = 1f;
+        boostStart = 0f;
     }
 
     // Update is called once per frame
@@ -66,6 +74,24 @@ public class PlayerMovement : MonoBehaviour
         Vector3 deltaPos = (currentVelocity+boostVel)*Time.smoothDeltaTime;
         gameObject.transform.position += deltaPos;
 
+        //Debug.Log(changeBoost);
+        //if (changeBoost)
+        //{
+        //    Debug.Log(changeBoost);
+        //    Debug.Log("Start");
+        //    if (CanBackToNormalBoost())
+        //    {
+        //        BackToNormalBoost();
+        //    }
+        //}
+
+        if (boostDelay == 0.3f && boostSpeed == 9f)
+        {
+            if (CanBackToNormalBoost())
+            {
+                BackToNormalBoost();
+            }
+        }
     }
     
     public Vector2 getVelocity(){
@@ -107,9 +133,23 @@ public class PlayerMovement : MonoBehaviour
             acceleration = -acceleration / 5f;
         }
     }
+
     private void OnTriggerExit2D(Collider2D other) {
         if(other.gameObject.name=="WorldBound"){
             Debug.Log("Left play area");
         }    
+    }
+
+    private void BackToNormalBoost()
+    {
+        boostSpeed = 6f;
+        boostDelay = 1f;
+        changeBoost = false;
+    }
+
+    private bool CanBackToNormalBoost()
+    {
+        float num = Time.realtimeSinceStartup - boostChangeTimeStamp;
+        return num >= boostChangeInterval;
     }
 }

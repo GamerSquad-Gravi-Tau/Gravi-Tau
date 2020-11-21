@@ -34,5 +34,17 @@ public class BulletBehaviour : MonoBehaviour
             s.TakeDamage(damage);
             Destroy(gameObject);
         }
+        if (collision.gameObject.name == "SpaceAITurret" || collision.gameObject.name == "SpaceAITurret(Clone)")
+        {
+            Destroy(this.gameObject);
+        }
+        if (collision.gameObject.name == "SpaceStationTurret" || collision.gameObject.name == "SpaceStationTurret(Clone)")
+        {
+            Destroy(this.gameObject);
+        }
+        if (collision.gameObject.name == "SpaceStation" || collision.gameObject.name == "SpaceStation(Clone)")
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

@@ -25,9 +25,11 @@ public class EnemyManger : MonoBehaviour
             SpawnFourEnemyWithTurret();
             SpawnSpaceTurret();
             SpawnSpaceFleet();
+            SpawnEnemyDrop();
             OneTime++;
         }
-        if (this.transform.childCount <= 60 && OneBoss == 0)
+
+        if ((this.transform.childCount - 10) <= 10 && OneBoss == 0)
         {
             GameObject NewBoss = Instantiate(Resources.Load("Prefabs/Boss") as GameObject);
             NewBoss.transform.position = GetRandomPosition();
@@ -37,7 +39,7 @@ public class EnemyManger : MonoBehaviour
 
     private void SpawnSingleEnemy()
     {
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 20; i++)//20 enemyies
         {
             GameObject NewEnemyOne = Instantiate(Resources.Load("Prefabs/ChaseEnemy") as GameObject);
             NewEnemyOne.GetComponent<EnemyChase>().despawn = false;
@@ -48,7 +50,7 @@ public class EnemyManger : MonoBehaviour
 
     private void SpawnSpaceTurret()
     {
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 10; i++)//10 enemies
         {
             GameObject NewEnemyTurret = Instantiate(Resources.Load("Prefabs/SpaceAITurret") as GameObject);
             NewEnemyTurret.transform.parent = this.gameObject.transform;
@@ -58,7 +60,7 @@ public class EnemyManger : MonoBehaviour
 
     private void SpawnFourEnemyWithTurret()
     {
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 5; i++)//25 enemies
         {
             Vector3 R = GetRandomPosition();
 
@@ -90,13 +92,34 @@ public class EnemyManger : MonoBehaviour
 
     private void SpawnSpaceFleet()
     {
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 5; i++)//5 space station
         {
             Vector3 R = GetRandomPosition();
 
             GameObject NewEnemyTurret = Instantiate(Resources.Load("Prefabs/SpaceStationOriginal") as GameObject);
             NewEnemyTurret.transform.parent = this.gameObject.transform;
             NewEnemyTurret.transform.position = R;
+        }
+    }
+
+    private void SpawnEnemyDrop()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            Vector3 R = GetRandomPosition();
+
+            GameObject HealthDrop = Instantiate(Resources.Load("Prefabs/EnemyHealthBagDrop") as GameObject);
+            HealthDrop.transform.parent = this.gameObject.transform;
+            HealthDrop.transform.position = R;
+        }
+
+        for (int i = 0; i < 5; i++)
+        {
+            Vector3 R = GetRandomPosition();
+
+            GameObject BoostDrop = Instantiate(Resources.Load("Prefabs/EnemyBoostDrop") as GameObject);
+            BoostDrop.transform.parent = this.gameObject.transform;
+            BoostDrop.transform.position = R;
         }
     }
 

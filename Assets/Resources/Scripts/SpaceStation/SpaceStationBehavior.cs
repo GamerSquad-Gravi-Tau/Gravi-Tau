@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpaceStationBehavior : MonoBehaviour
 {
     public bool StartAttack = false;
+    public bool StopSpawnEnemy = false;
 
     private int Health = 1000;
     private int EnemyReserve = 100;
@@ -22,13 +23,26 @@ public class SpaceStationBehavior : MonoBehaviour
     GameObject SatellitTwo;
     GameObject SatellitThree;
     GameObject SatellitFour;
+    public bool DestoryAllSatellites = false;
 
     GameObject TurretRight;
     GameObject TurretLeft;
+    public bool RightTurretDead;
+    public bool LeftTurretDead;
 
     // Start is called before the first frame update
     void Start()
     {
+        StartAttack = false;
+        StopSpawnEnemy = false;
+        Health = 1000;
+        EnemyReserve = 100;
+        Satellit = 10;
+        RestoreStationInterval = 60f;
+        ChangeModeInterval = 5f;
+        SpwanEnemyTimeStamp = 0f;
+        SpwanEnemyInterval = 10f;
+
         SatellitOne = Instantiate(Resources.Load("Prefabs/SpaceStationSatellit") as GameObject);
         SatellitTwo = Instantiate(Resources.Load("Prefabs/SpaceStationSatellit") as GameObject);
         SatellitThree = Instantiate(Resources.Load("Prefabs/SpaceStationSatellit") as GameObject);
@@ -44,25 +58,45 @@ public class SpaceStationBehavior : MonoBehaviour
         SatellitThree.transform.position = this.transform.position + new Vector3(-1f, -1f, 0f);
         SatellitFour.transform.position = this.transform.position + new Vector3(1f, -1f, 0f);
 
-        TurretRight = Instantiate(Resources.Load("Prefabs/SpaceStationTurretRight") as GameObject);
+        TurretRight = Instantiate(Resources.Load("Prefabs/SpaceStationTurret") as GameObject);
         TurretRight.transform.parent = this.gameObject.transform;
         TurretRight.transform.position = this.transform.position + new Vector3(1f, 0f, 0f);
+        TurretRight.GetComponent<SpaceStationTurret>().MyStationPosition = this.transform.position;
+        TurretRight.GetComponent<SpaceStationTurret>().RightSide = true;
+        TurretRight.GetComponent<TurretHealth>().RightHealth = true;
 
-        TurretLeft = Instantiate(Resources.Load("Prefabs/SpaceStationTurretLeft") as GameObject);
+        TurretLeft = Instantiate(Resources.Load("Prefabs/SpaceStationTurret") as GameObject);
         TurretLeft.transform.parent = this.gameObject.transform;
         TurretLeft.transform.position = this.transform.position + new Vector3(-1f, 0f, 0f);
+        TurretLeft.GetComponent<SpaceStationTurret>().MyStationPosition = this.transform.position;
+        TurretLeft.GetComponent<SpaceStationTurret>().RightSide = false;
+        TurretLeft.GetComponent<TurretHealth>().LeftHealth = true;
     }
 
     // Update is called once per frame
     void Update()
     {
         ChechHealth();
-        if (StartAttack)
+        if (StartAttack && !StopSpawnEnemy)
         {
             SpwanFourEnemyPerTenSeconds();
         }
 
+        if (DestoryAllSatellites)
+        {
+            Destroy(SatellitOne);
+            Destroy(SatellitTwo);
+            Destroy(SatellitThree);
+            Destroy(SatellitFour);
+            DestoryAllSatellites = false;
+        }
+
         SetTurretPosition();
+
+        if (this.transform.childCount <= 1)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     private void SpwanFourEnemyPerTenSeconds()
@@ -106,7 +140,15 @@ public class SpaceStationBehavior : MonoBehaviour
 
     private void SetTurretPosition()
     {
-        TurretRight.GetComponentInChildren<SpaceStationTurret>().MyStationPosition = this.transform.position;
-        TurretLeft.GetComponentInChildren<SpaceStationTurret>().MyStationPosition = this.transform.position;
+        if (!RightTurretDead)
+        {
+            TurretRight.GetComponentInChildren<SpaceStationTurret>().MyStationPosition = this.transform.position;
+        }
+        if (!LeftTurretDead)
+        {
+            TurretLeft.GetComponentInChildren<SpaceStationTurret>().MyStationPosition = this.transform.position;
+        }
+        //TurretRight.GetComponentInChildren<SpaceStationTurret>().MyStationPosition = this.transform.position;
+        //TurretLeft.GetComponentInChildren<SpaceStationTurret>().MyStationPosition = this.transform.position;
     }
 }

@@ -58,4 +58,10 @@ public class OrbitMechanic : MonoBehaviour
             return angle;
         }
     }
+
+    public Vector2 getPlanetVelocity(){
+        Vector2 ret = new Vector2(Mathf.Cos(angle),Mathf.Sin(angle));
+        ret*=orbitDistance*dTheta;
+        return ret;
+    }
 }

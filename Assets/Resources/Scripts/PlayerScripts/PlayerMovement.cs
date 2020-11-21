@@ -20,10 +20,12 @@ public class PlayerMovement : MonoBehaviour
 
     public bool allowBoost = true;
 
+    private PlayerWeaponsController shotControl;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        shotControl = gameObject.GetComponent<PlayerWeaponsController>();
     }
 
     // Update is called once per frame
@@ -80,8 +82,10 @@ public class PlayerMovement : MonoBehaviour
 
         Vector2 boostVel;
         if(boostStart>=boostDelay){
+            shotControl.enableFire = false;
             boostVel=faceVector.normalized*boostSpeed;
         }else{
+            shotControl.enableFire = true;
             boostVel=Vector2.zero;
         }
 

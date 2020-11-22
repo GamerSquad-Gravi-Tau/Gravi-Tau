@@ -34,4 +34,12 @@ public class PlayerHealth : MonoBehaviour
     {
         health -= damage;
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.name == "SpaceStationSatellit" || collision.gameObject.name == "SpaceStationSatellit(Clone)")
+        {
+            health -= 10;
+        }
+    }
 }

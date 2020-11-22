@@ -10,15 +10,10 @@ public class BulletBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        damage = 20;
-        /*Vector3 tempVel = transform.up * speed;
-        if (PlayerMovement.getVelocity().x >= 0 &&
-            PlayerMovement.getVelocity().y >= 0)
-        {
-            tempVel += (Vector3)PlayerMovement.getVelocity();
-        }
-        rb.velocity = tempVel; */
-        rb.velocity = transform.up * speed + (Vector3)PlayerMovement.getVelocity();
+
+        damage = 30;
+        rb.velocity = (Vector3)PlayerMovement.retVel() + transform.up * speed;
+
     }
 
     private void OnBecameInvisible()

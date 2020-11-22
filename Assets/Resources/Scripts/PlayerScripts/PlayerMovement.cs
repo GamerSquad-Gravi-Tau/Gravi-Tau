@@ -70,7 +70,7 @@ public class PlayerMovement : MonoBehaviour
 
     }
     
-    public static Vector2 getVelocity(){
+    public Vector2 getVelocity(){
         return currentVelocity;
     }
 

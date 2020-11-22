@@ -8,8 +8,8 @@ public class PlayerWeaponsController : MonoBehaviour
     public GameObject homing;
     public GameObject bullet;
 
-    public float timeBetweenBullet = .1f;
-    private float bulletCooldown = .1f;
+    public float timeBetweenBullet = 0.1f;
+    private float bulletCooldown = 0.1f;
 
     public float timeBetweenHoming = 1f;
     private float homingCooldown = 1f;
@@ -24,9 +24,10 @@ public class PlayerWeaponsController : MonoBehaviour
                 shootBullet();
                 bulletCooldown=0f;
             }
+        }else{
+            bulletCooldown+=Time.smoothDeltaTime;
         }
-        bulletCooldown+=Time.smoothDeltaTime;
-
+        
         if(homingCooldown>timeBetweenHoming)
         {
             if (Input.GetMouseButton(1))
@@ -34,8 +35,9 @@ public class PlayerWeaponsController : MonoBehaviour
                 shootHoming();
                 homingCooldown=0f;
             }
+        }else{
+            homingCooldown+=Time.smoothDeltaTime;
         }
-        homingCooldown+=Time.smoothDeltaTime;
     }
 
     void shootBullet()

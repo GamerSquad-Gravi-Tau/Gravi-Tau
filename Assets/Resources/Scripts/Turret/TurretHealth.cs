@@ -35,6 +35,9 @@ public class TurretHealth : MonoBehaviour
             TenPercentDropCoin();
             DropHealth();
 
+            GameObject FindManger;
+            FindManger = GameObject.Find("EnemyManger");
+            FindManger.GetComponent<EnemyManger>().DestoriedEnemyNumber += 1;
             Destroy(this.gameObject);
         }
         //checkMyHealth();

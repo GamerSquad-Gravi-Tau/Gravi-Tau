@@ -11,6 +11,8 @@ public class EnemyManger : MonoBehaviour
     private int SafeSizeOne = 10;
     int OneTime = 0;
     int OneBoss = 0;
+
+    public int DestoriedEnemyNumber;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,10 +31,16 @@ public class EnemyManger : MonoBehaviour
             OneTime++;
         }
 
-        if ((this.transform.childCount - 10) <= 10 && OneBoss == 0)
+        //if ((this.transform.childCount - 10) <= 10 && OneBoss == 0)
+        //{
+        //    GameObject NewBoss = Instantiate(Resources.Load("Prefabs/Boss") as GameObject);
+        //    NewBoss.transform.position = GetRandomPosition();
+        //    OneBoss++;
+        //}
+        if (DestoriedEnemyNumber >= 35 && OneBoss == 0)
         {
-            GameObject NewBoss = Instantiate(Resources.Load("Prefabs/Boss") as GameObject);
-            NewBoss.transform.position = GetRandomPosition();
+            //GameObject NewBoss = Instantiate(Resources.Load("Prefabs/SmallBoss") as GameObject);
+            //NewBoss.transform.position = GetRandomPosition();
             OneBoss++;
         }
     }
@@ -50,11 +58,19 @@ public class EnemyManger : MonoBehaviour
 
     private void SpawnSpaceTurret()
     {
-        for (int i = 0; i < 10; i++)//10 enemies
+        for (int i = 0; i < 5; i++)//15 enemies
         {
             GameObject NewEnemyTurret = Instantiate(Resources.Load("Prefabs/SpaceAITurret") as GameObject);
             NewEnemyTurret.transform.parent = this.gameObject.transform;
             NewEnemyTurret.transform.position = GetRandomPosition();
+
+            GameObject NewShootGunTurret = Instantiate(Resources.Load("Prefabs/SpaceShootGunTurret") as GameObject);
+            NewShootGunTurret.transform.parent = this.gameObject.transform;
+            NewShootGunTurret.transform.position = GetRandomPosition();
+
+            GameObject NewRifleTurret = Instantiate(Resources.Load("Prefabs/SpaceRifleTurret") as GameObject);
+            NewRifleTurret.transform.parent = this.gameObject.transform;
+            NewRifleTurret.transform.position = GetRandomPosition();
         }
     }
 

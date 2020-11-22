@@ -27,6 +27,10 @@ public class SpaceStationHealth : MonoBehaviour
             FivePercentDropBoost();
             TenPercentDropCoin();
             DropHealth();
+
+            GameObject FindManger;
+            FindManger = GameObject.Find("EnemyManger");
+            FindManger.GetComponent<EnemyManger>().DestoriedEnemyNumber += 1;
             Destroy(gameObject);
         }
     }

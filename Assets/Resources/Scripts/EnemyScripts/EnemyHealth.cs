@@ -38,6 +38,9 @@ public class EnemyHealth : MonoBehaviour
         TenPercentDropCoin();
         DropHealth();
 
+        GameObject FindManger;
+        FindManger = GameObject.Find("EnemyManger");
+        FindManger.GetComponent<EnemyManger>().DestoriedEnemyNumber += 1;
         Destroy(gameObject);
     }
 

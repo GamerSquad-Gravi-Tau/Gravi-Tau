@@ -5,10 +5,11 @@ using UnityEngine;
 public class TurretLaserScript : MonoBehaviour
 {
     private CameraBounds boundObject;
-    public float laserSpeed = 8f;
+    public float laserSpeed = 5f;
 
     void Start()
     {
+        laserSpeed = 5f;
         boundObject = Camera.main.GetComponent<CameraBounds>();
     }
 
@@ -22,7 +23,7 @@ public class TurretLaserScript : MonoBehaviour
             float maxX = currentBound.extents.x;
             float maxY = currentBound.extents.y;
 
-            if (Mathf.Abs(curRelativePosition.x) > maxX || Mathf.Abs(curRelativePosition.y) > maxY)
+            if (Mathf.Abs(curRelativePosition.x) > (maxX + 20f) || Mathf.Abs(curRelativePosition.y) > (maxY + 20f))
             {
                 Destroy(gameObject);
             }

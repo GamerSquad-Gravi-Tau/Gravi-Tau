@@ -31,8 +31,6 @@ public class SpaceStationTurret : MonoBehaviour
             if (AttackCoolDown())
             {
                 Attack();
-                Attack();
-                Attack();
             }
         }
 

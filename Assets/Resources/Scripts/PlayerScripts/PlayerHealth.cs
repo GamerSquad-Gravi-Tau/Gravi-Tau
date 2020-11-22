@@ -6,18 +6,19 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public Text healthText;
+    //public Text healthText;
     public int health;
+    public Slider s;
     // Start is called before the first frame update
     void Start()
     {
-        health = 200;
+        health = 100;
     }
 
     // Update is called once per frame
     void Update()
     {
-        healthText.text = "Health: " + health;
+        s.value = health;
         checkHealth();
     }
 
@@ -25,12 +26,20 @@ public class PlayerHealth : MonoBehaviour
     {
         if (health < 1)
         {
-            //SceneManager.LoadScene(1);
+            SceneManager.LoadScene(2);
         }
     }
 
     public void TakeDamage(int damage)
     {
         health -= damage;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.name == "SpaceStationSatellit" || collision.gameObject.name == "SpaceStationSatellit(Clone)")
+        {
+            health -= 10;
+        }
     }
 }

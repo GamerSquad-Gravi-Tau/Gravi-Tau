@@ -22,19 +22,18 @@ public class EnemyChase : MonoBehaviour
     private Vector2 spawnPos;
 
     public float maxChaseDistance = 5f;
-    public float hoverdistance = 1.2f;
+    public float hoverdistance = .5f;
     public float shotTimer = 0.75f;
 
     private float lastShot = 0f;
-    public float predictionTime = .1f;
-    private float maxAccel = 7f;
-    private float maxSpeed = 1.5f;
-
+    public float predictionTime = .05f;
+    private float maxAccel = 10f;
+    private float maxSpeed = 3f;
 
     private float stateTime = 0f;
     private float stationaryTimer = 2f;
     
-
+    private float attackAngle;
 
     public bool despawn = true;
     // Start is called before the first frame update
@@ -43,6 +42,7 @@ public class EnemyChase : MonoBehaviour
         boundObject = Camera.main.GetComponent<CameraBounds>();
         spawnPos = gameObject.transform.localPosition;
         current_state = ChaseEnemyState.travel;
+        attackAngle = Random.value*2f*Mathf.PI;
     }
 
     // Update is called once per frame
@@ -102,12 +102,13 @@ public class EnemyChase : MonoBehaviour
     }
 
     private void aggroUpdate(){
-        // had to change from using playermove instance because it would not build otherwise
+        //Aim at player's future position
         Vector2 playerVelocity = playerMove.getVelocity();
         Vector2 difference = playerTransform.position - gameObject.transform.position;
-        difference+=(playerVelocity*predictionTime);
+        difference+=(playerVelocity*predictionTime*1);
         gameObject.transform.up = Vector3.Lerp(gameObject.transform.up,difference.normalized,0.1f);
 
+        //Shoot if available
         if(Time.time-lastShot > shotTimer){
             shootLaser();
         }
@@ -120,7 +121,11 @@ public class EnemyChase : MonoBehaviour
         }else{
             //Hover around hoverdistance
             Vector2 curPos = gameObject.transform.position;
-            Vector2 targetPos = curPos + difference.normalized*hoverdistance;
+            Vector2 targetPos = playerTransform.position;
+            targetPos+=playerVelocity*predictionTime*2; //Predicted location
+
+            targetPos.x += hoverdistance*Mathf.Cos(attackAngle); //Target position is on a circle around the player
+            targetPos.y += hoverdistance*Mathf.Sin(attackAngle); 
 
             Vector2 calcAccel;
             if(difference.magnitude>hoverdistance){
@@ -128,6 +133,7 @@ public class EnemyChase : MonoBehaviour
                 calcAccel = (2/(predictionTime*predictionTime))*(targetPos-curPos-currentVelocity*predictionTime);
             }else{
                 calcAccel = currentVelocity-playerVelocity;
+                calcAccel /= Time.smoothDeltaTime;
             }
             
             if(calcAccel.magnitude>maxAccel){

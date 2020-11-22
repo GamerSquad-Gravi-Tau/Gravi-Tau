@@ -7,10 +7,10 @@ public class SpaceStationTurret : MonoBehaviour
     GameObject Player;
 
     public bool StartActive = false;
+    public bool KeepUpdatePosition = true;
+    public bool RightSide = true;
 
     public Vector3 MyStationPosition;
-
-    public int TurretHealth;
 
     private float ShootTimeStamp;
     private float ShootInterval = 5f;
@@ -19,16 +19,6 @@ public class SpaceStationTurret : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (this.gameObject.name == "SpaceStationTurretRight")
-        {
-            this.transform.position = MyStationPosition + new Vector3(1f, 0f, 0f);
-        }
-
-        if (this.gameObject.name == "SpaceStationTurretLeft")
-        {
-            this.transform.position = MyStationPosition + new Vector3(-1f, 0f, 0f);
-        }
-
         Player = GameObject.Find("PlayerShip");
     }
 
@@ -41,12 +31,13 @@ public class SpaceStationTurret : MonoBehaviour
             if (AttackCoolDown())
             {
                 Attack();
-                Attack();
-                Attack();
             }
         }
 
-        UpdateMyPosition();
+        if (KeepUpdatePosition)
+        {
+            UpdateMyPosition();
+        }
     }
 
     private void FactToPlayer()
@@ -59,12 +50,11 @@ public class SpaceStationTurret : MonoBehaviour
 
     private void UpdateMyPosition()
     {
-        if (this.gameObject.name == "SpaceStationTurretRight")
+        if (RightSide)
         {
             this.transform.position = MyStationPosition + new Vector3(1f, 0f, 0f);
         }
-
-        if (this.gameObject.name == "SpaceStationTurretLeft")
+        else
         {
             this.transform.position = MyStationPosition + new Vector3(-1f, 0f, 0f);
         }
@@ -83,10 +73,5 @@ public class SpaceStationTurret : MonoBehaviour
     {
         float num = Time.realtimeSinceStartup - ShootTimeStamp;
         return num >= ShootInterval;
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        //For body collider
     }
 }

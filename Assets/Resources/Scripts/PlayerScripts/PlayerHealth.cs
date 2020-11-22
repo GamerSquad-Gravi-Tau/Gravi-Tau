@@ -25,7 +25,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (health < 1)
         {
-            SceneManager.LoadScene(1);
+            //SceneManager.LoadScene(1);
         }
     }
 

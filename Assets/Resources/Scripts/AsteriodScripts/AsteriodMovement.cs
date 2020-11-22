@@ -19,11 +19,13 @@ public class AsteriodMovement : MonoBehaviour
     void Start()
     {
         transform.localScale = new Vector3(0.2f, 0.2f, 1f);
+        explode.transform.localScale = new Vector3(0.05f, 0.05f, 1f);
         //parentTransform = this.transform.parent;
         //transform.localPosition = parentTransform.transform.localPosition;
         //parentTransform = gameObject.transform.parent.gameObject.transform;
-        explode.transform.position = Vector3.zero;
-        parentTransform = gameObject.transform.parent;
+        //explode.transform.position = Vector3.zero;
+        //parentTransform = gameObject.transform.parent;
+        //explode.transform.localPosition = transform.localPosition;
     }
 
     // Update is called once per frame
@@ -47,10 +49,10 @@ public class AsteriodMovement : MonoBehaviour
         }
         if (currentTime >= totalTime)
         {
-            GameObject asteriod = Instantiate(Resources.Load("Prefabs/Asteriod") as GameObject);
-            asteriod.transform.parent = parentTransform;
-            asteriod.transform.localScale = new Vector3(1f, 1f, 1f);
-            explode.transform.localScale = new Vector3(1f, 1f, 1f);
+            //GameObject asteriod = Instantiate(Resources.Load("Prefabs/Asteriod 2.0") as GameObject);
+            //asteriod.transform.parent = parentTransform;
+            //asteriod.transform.localScale = new Vector3(1f, 1f, 1f);
+            //explode.transform.localScale = new Vector3(1f, 1f, 1f);
             Destroy(gameObject);
         }
         explode.transform.localPosition = transform.localPosition;
@@ -62,14 +64,11 @@ public class AsteriodMovement : MonoBehaviour
         if (collision.gameObject.name == "PlayerShip")
         {
             PlayerHealth player = collision.GetComponent<PlayerHealth>();
-            //float shipSpeed = collision.GetComponent<PlayerMovement>().tempShipSpeed;
+            float shipSpeed = collision.GetComponent<PlayerMovement>().tempShipSpeed;
             if (!destroyed)
             {
                 player.TakeDamage(50);
-                Destroy(gameObject);
-                /*
-
-                //this.GetComponent<Collider2D>().enabled = false;
+                this.GetComponent<Collider2D>().enabled = false;
                 Vector3 OriginalPosition = this.transform.localPosition;
                 Vector2 ShakeMagnitude = new Vector2((collision.GetComponent<PlayerMovement>().tempShipSpeed) / 50,
                                                     (collision.GetComponent<PlayerMovement>().tempShipSpeed) / 50);
@@ -79,9 +78,12 @@ public class AsteriodMovement : MonoBehaviour
                 explode.Play();
                 destroyed = true;
                 asteriodSpeed = 0;
-                */
+                
             }
-        }
+        } /*else
+        {
+            Destroy(gameObject);
+        } */
 
 
         AsteriodMovement otherAsteriod = collision.GetComponent<AsteriodMovement>();
@@ -98,12 +100,5 @@ public class AsteriodMovement : MonoBehaviour
         curColor.a *= 0.95f;
         renderer.color = curColor;
     }
-
-    /* private void OnBecameInvisible()
-    {
-        Destroy(gameObject);
-        GameObject asteriod = Instantiate(Resources.Load("Prefabs/Asteriod") as GameObject);
-        asteriod.transform.parent = parentTransform;
-    } */
 
 }

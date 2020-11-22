@@ -5,7 +5,7 @@ using UnityEngine;
 public class AsteriodMovement : MonoBehaviour
 {
 
-    public float asteriodSpeed = 0.3F;
+    public float asteriodSpeed = 10F;
     public ParticleSystem explode;
     public float shakeSpeed = 1.0f;
     public float shakeAmount = 1.0f;
@@ -20,12 +20,8 @@ public class AsteriodMovement : MonoBehaviour
     {
         transform.localScale = new Vector3(0.2f, 0.2f, 1f);
         explode.transform.localScale = new Vector3(0.05f, 0.05f, 1f);
-        //parentTransform = this.transform.parent;
-        //transform.localPosition = parentTransform.transform.localPosition;
-        //parentTransform = gameObject.transform.parent.gameObject.transform;
-        //explode.transform.position = Vector3.zero;
-        //parentTransform = gameObject.transform.parent;
-        //explode.transform.localPosition = transform.localPosition;
+        float orbitSpeed = Random.Range(2.5f, 7.0f);
+        gameObject.GetComponent<OrbitMechanic>().ORBIT_CONST = orbitSpeed;
     }
 
     // Update is called once per frame
@@ -49,13 +45,8 @@ public class AsteriodMovement : MonoBehaviour
         }
         if (currentTime >= totalTime)
         {
-            //GameObject asteriod = Instantiate(Resources.Load("Prefabs/Asteriod 2.0") as GameObject);
-            //asteriod.transform.parent = parentTransform;
-            //asteriod.transform.localScale = new Vector3(1f, 1f, 1f);
-            //explode.transform.localScale = new Vector3(1f, 1f, 1f);
             Destroy(gameObject);
         }
-        explode.transform.localPosition = transform.localPosition;
 
     }
 
@@ -67,7 +58,7 @@ public class AsteriodMovement : MonoBehaviour
             float shipSpeed = collision.GetComponent<PlayerMovement>().tempShipSpeed;
             if (!destroyed)
             {
-                player.TakeDamage(50);
+                player.TakeDamage(10);
                 this.GetComponent<Collider2D>().enabled = false;
                 Vector3 OriginalPosition = this.transform.localPosition;
                 Vector2 ShakeMagnitude = new Vector2((collision.GetComponent<PlayerMovement>().tempShipSpeed) / 50,

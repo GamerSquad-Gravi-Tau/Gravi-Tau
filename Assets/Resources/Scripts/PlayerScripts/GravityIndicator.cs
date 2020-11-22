@@ -7,17 +7,24 @@ public class GravityIndicator : MonoBehaviour
     
     List<Transform> gravityObjects = new List<Transform>(); 
     List<GameObject> indicators = new List<GameObject>();
+
+    private float distance = .5f;
     
     // Update is called once per frame
     void Update()
     {
-        foreach(Transform t in gravityObjects){
-            updateGravityIndicator(t);
+        for(int i=0;i<gravityObjects.Count;i++){
+            updateGravityIndicator(i);
         }
     }
 
-    private void updateGravityIndicator(Transform t){
-        
+    private void updateGravityIndicator(int index){
+        Vector2 planetPos = gravityObjects[index].position;
+        Vector2 playerPos = gameObject.transform.position;
+        Vector3 arrowPos = planetPos - playerPos;
+        arrowPos = arrowPos.normalized*distance;
+        indicators[index].transform.position=gameObject.transform.position+ arrowPos;
+        indicators[index].transform.up=arrowPos;
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
@@ -33,6 +40,7 @@ public class GravityIndicator : MonoBehaviour
         if(other.gameObject.tag=="GravityCollider"){
             int toRemove = gravityObjects.IndexOf(other.gameObject.transform);
             gravityObjects.RemoveAt(toRemove);
+            Destroy(indicators[toRemove]);
             indicators.RemoveAt(toRemove);
         }
     }

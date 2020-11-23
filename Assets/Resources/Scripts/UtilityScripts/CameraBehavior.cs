@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class CameraBehavior : MonoBehaviour
 {
-    private float min = 1f;
-    private float max = 15f;
-    private float sensativity = 2f;
+    private float min = 2f;
+    private float max = 7.5f;
+    private float sensativity = 3f;
     private Transform player;
 
     void Start(){

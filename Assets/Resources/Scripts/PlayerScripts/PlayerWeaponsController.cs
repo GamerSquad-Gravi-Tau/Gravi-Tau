@@ -27,7 +27,7 @@ public class PlayerWeaponsController : MonoBehaviour
             {
                 if (Input.GetMouseButton(0))
                 {
-                    AudioSource.PlayClipAtPoint(ShotSoundEffect, transform.position);
+                    AudioSource.PlayClipAtPoint(ShotSoundEffect, transform.position, 0.5f);
                     shootBullet();
                     bulletCooldown=0f;
                 }
@@ -39,7 +39,7 @@ public class PlayerWeaponsController : MonoBehaviour
             {
                 if (Input.GetMouseButton(1))
                 {
-                    AudioSource.PlayClipAtPoint(MissileSoundEffect, transform.position);
+                    AudioSource.PlayClipAtPoint(MissileSoundEffect, transform.position, 0.5f);
                     shootHoming();
                     homingCooldown=0f;
                 }

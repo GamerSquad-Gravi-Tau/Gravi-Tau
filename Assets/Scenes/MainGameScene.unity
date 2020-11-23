@@ -4236,6 +4236,100 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DestoriedEnemyNumber: 0
+--- !u!1001 &1155196310
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 631494174136375053, guid: b3ffffcd4355dbc45a2cea9f47d9d5a6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 631494174136375055, guid: b3ffffcd4355dbc45a2cea9f47d9d5a6,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: ad403fe5cb1141c4db962f01954ad170, type: 3}
+    - target: {fileID: 631494174136375055, guid: b3ffffcd4355dbc45a2cea9f47d9d5a6,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 631494175414701595, guid: b3ffffcd4355dbc45a2cea9f47d9d5a6,
+        type: 3}
+      propertyPath: m_Name
+      value: BackGroundMusic
+      objectReference: {fileID: 0}
+    - target: {fileID: 631494175414701596, guid: b3ffffcd4355dbc45a2cea9f47d9d5a6,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 631494175414701596, guid: b3ffffcd4355dbc45a2cea9f47d9d5a6,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 631494175414701596, guid: b3ffffcd4355dbc45a2cea9f47d9d5a6,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 631494175414701596, guid: b3ffffcd4355dbc45a2cea9f47d9d5a6,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 631494175414701596, guid: b3ffffcd4355dbc45a2cea9f47d9d5a6,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 631494175414701596, guid: b3ffffcd4355dbc45a2cea9f47d9d5a6,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 631494175414701596, guid: b3ffffcd4355dbc45a2cea9f47d9d5a6,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 631494175414701596, guid: b3ffffcd4355dbc45a2cea9f47d9d5a6,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 631494175414701596, guid: b3ffffcd4355dbc45a2cea9f47d9d5a6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 631494175414701596, guid: b3ffffcd4355dbc45a2cea9f47d9d5a6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 631494175414701596, guid: b3ffffcd4355dbc45a2cea9f47d9d5a6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 631494175430498661, guid: b3ffffcd4355dbc45a2cea9f47d9d5a6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 631494175757248130, guid: b3ffffcd4355dbc45a2cea9f47d9d5a6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b3ffffcd4355dbc45a2cea9f47d9d5a6, type: 3}
 --- !u!1001 &1186521550
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4939,6 +5033,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tempShipSpeed: 0
+  boostSpeed: 6
+  boostDelay: 1
+  boostStart: 0
+  changeBoost: 0
+  boostChangeTimeStamp: 0
+  boostChangeInterval: 5
   allowBoost: 1
 --- !u!60 &1325549411
 PolygonCollider2D:
@@ -5019,6 +5119,8 @@ MonoBehaviour:
   timeBetweenBullet: 0.1
   timeBetweenHoming: 1
   enableFire: 1
+  ShotSoundEffect: {fileID: 8300000, guid: 4a14985fcced5674bb9a3ec19845dc96, type: 3}
+  MissileSoundEffect: {fileID: 8300000, guid: 5b6d05357fa34904f835af508c576855, type: 3}
 --- !u!114 &1325549415
 MonoBehaviour:
   m_ObjectHideFlags: 0

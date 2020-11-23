@@ -16,6 +16,9 @@ public class PlayerWeaponsController : MonoBehaviour
 
     public bool enableFire=true;
 
+    public AudioClip ShotSoundEffect;
+    public AudioClip MissileSoundEffect;
+
     // Update is called once per frame
     void Update()
     {
@@ -24,6 +27,7 @@ public class PlayerWeaponsController : MonoBehaviour
             {
                 if (Input.GetMouseButton(0))
                 {
+                    AudioSource.PlayClipAtPoint(ShotSoundEffect, transform.position);
                     shootBullet();
                     bulletCooldown=0f;
                 }
@@ -35,6 +39,7 @@ public class PlayerWeaponsController : MonoBehaviour
             {
                 if (Input.GetMouseButton(1))
                 {
+                    AudioSource.PlayClipAtPoint(MissileSoundEffect, transform.position);
                     shootHoming();
                     homingCooldown=0f;
                 }
@@ -55,4 +60,7 @@ public class PlayerWeaponsController : MonoBehaviour
         Instantiate(homing, firePoint.position, firePoint.rotation);
     }
 
+    private void playShotSoundEffect()
+    {
+    }
 }

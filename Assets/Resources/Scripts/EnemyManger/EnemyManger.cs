@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class EnemyManger : MonoBehaviour
 {
-    Vector3 BlackHoleOne = new Vector3(0, 0, 0);
-    private int BlackHoleSizeOne = 20;
-
-    Vector3 BlackHoleTwo = new Vector3(100, 0, 0);
-    private int SafeSizeOne = 10;
     int OneTime = 0;
     int OneBoss = 0;
 

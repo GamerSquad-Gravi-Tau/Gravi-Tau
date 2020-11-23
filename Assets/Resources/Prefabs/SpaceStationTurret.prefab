@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1188392359814717450}
   - component: {fileID: -5751331804953668800}
   m_Layer: 0
-  m_Name: SpaceStationTurretLeft
+  m_Name: SpaceStationTurret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,6 +98,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StartActive: 0
+  KeepUpdatePosition: 1
+  RightSide: 1
   MyStationPosition: {x: 0, y: 0, z: 0}
 --- !u!61 &1188392359814717450
 BoxCollider2D:
@@ -138,6 +140,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MyHealth: 150
+  RightHealth: 0
+  LeftHealth: 0
 --- !u!1 &1188392361608861754
 GameObject:
   m_ObjectHideFlags: 0

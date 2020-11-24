@@ -9,7 +9,7 @@ public class PlanetAsteriod : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 6; i++) {
             SpawnAsteriod();
         }
     }
@@ -30,7 +30,7 @@ public class PlanetAsteriod : MonoBehaviour
         }
         else if (this.transform.localScale.x >= 3)
         {
-            float radius = Random.Range(5, 14);
+            float radius = Random.Range(6, 11);
             MyAsteriod.transform.position = this.transform.position + new Vector3(radius, 0, 0);
         }
     }

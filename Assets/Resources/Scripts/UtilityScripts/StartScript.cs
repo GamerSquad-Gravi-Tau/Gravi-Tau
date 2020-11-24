@@ -18,13 +18,9 @@ public class StartScript : MonoBehaviour
     {
         SceneManager.LoadScene(4);
     }
-
-    private void Update()
+    public void backToMenu()
     {
-        if (Input.GetKeyDown("b"))
-        {
-            SceneManager.LoadScene(0);
-        }
+        SceneManager.LoadScene(0);
     }
     public void onClickQuit()
     {

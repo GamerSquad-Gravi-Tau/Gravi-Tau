@@ -30,8 +30,8 @@ public class SpawnOnAsteriodBelt : MonoBehaviour
     private Vector2 GetRandomVectorOnCircle()
     {
         float radius = 50;
-        float XPosition = radius * Mathf.Cos(UnityEngine.Random.RandomRange(0,360));
-        float YPosition = radius * Mathf.Sin(UnityEngine.Random.RandomRange(0, 360));
+        float XPosition = radius * Mathf.Cos(UnityEngine.Random.Range(0,360));
+        float YPosition = radius * Mathf.Sin(UnityEngine.Random.Range(0, 360));
 
         Vector2 newRandom = new Vector2(XPosition, YPosition);
         return newRandom;

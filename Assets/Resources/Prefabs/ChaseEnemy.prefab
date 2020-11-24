@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 4894074562385220361}
   - component: {fileID: 3017768988159587245}
   - component: {fileID: 2569668630123362183}
-  - component: {fileID: 5782752737753193202}
+  - component: {fileID: 7628743415960020944}
   m_Layer: 0
   m_Name: ChaseEnemy
   m_TagString: Enemy
@@ -170,8 +170,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.017619133}
-  m_Size: {x: 0.1, y: 0.23523825}
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.1, y: 0.22}
   m_Direction: 0
 --- !u!114 &2569668630123362183
 MonoBehaviour:
@@ -186,8 +186,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
---- !u!60 &5782752737753193202
-PolygonCollider2D:
+--- !u!70 &7628743415960020944
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -200,28 +200,8 @@ PolygonCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.035732493, y: 0.07923228}
-      - {x: 0.034848165, y: 0.10776292}
-      - {x: -0.004684441, y: 0.15680015}
-      - {x: -0.029902844, y: 0.12005185}
-      - {x: -0.06919062, y: -0.008908838}
-      - {x: -0.08420411, y: -0.033781417}
-      - {x: -0.065478444, y: -0.13910174}
-      - {x: 0.057603024, y: -0.1427845}
-      - {x: 0.05962789, y: -0.13461632}
-      - {x: 0.075918324, y: -0.039025486}
-      - {x: 0.04775271, y: 0.08186106}
+  m_Size: {x: 0.16, y: 0.35}
+  m_Direction: 0
 --- !u!1 &4061125479548454149
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,14 +14,17 @@ public class AsteriodMovement : MonoBehaviour
     private bool destroyed = false;
     private float currentTime = 0f;
     private float totalTime = 10f;
+    private int health;
 
     // Start is called before the first frame update
     void Start()
     {
-        transform.localScale = new Vector3(0.2f, 0.2f, 1f);
-        explode.transform.localScale = new Vector3(0.05f, 0.05f, 1f);
-        float orbitSpeed = Random.Range(2.5f, 7.0f);
+        health = 100;
+        transform.localScale = new Vector3(0.4f, 0.4f, 1f);
+        explode.transform.localScale = new Vector3(0.1f, 0.1f, 1f);
+        float orbitSpeed = Random.Range(5f, 15f);
         gameObject.GetComponent<OrbitMechanic>().ORBIT_CONST = orbitSpeed;
+        asteriodSpeed = orbitSpeed;
     }
 
     // Update is called once per frame
@@ -58,14 +61,13 @@ public class AsteriodMovement : MonoBehaviour
             float shipSpeed = collision.GetComponent<PlayerMovement>().tempShipSpeed;
             if (!destroyed)
             {
-                player.TakeDamage(10);
+                player.TakeDamage(20);
                 this.GetComponent<Collider2D>().enabled = false;
                 Vector3 OriginalPosition = this.transform.localPosition;
-                Vector2 ShakeMagnitude = new Vector2((collision.GetComponent<PlayerMovement>().tempShipSpeed) / 50,
-                                                    (collision.GetComponent<PlayerMovement>().tempShipSpeed) / 50);
-                AsteriodShake.SetShakeParameters(10f, 1);
+                Vector2 ShakeMagnitude = new Vector2(0.1f, 0.1f);
+                AsteriodShake.SetShakeParameters(4f, 1f);
                 AsteriodShake.SetShakeMagnitude(ShakeMagnitude, OriginalPosition);
-
+                DisableOrbit();
                 explode.Play();
                 destroyed = true;
                 asteriodSpeed = 0;
@@ -75,6 +77,23 @@ public class AsteriodMovement : MonoBehaviour
         {
             Destroy(gameObject);
         } */
+
+
+        if (collision.gameObject.name == "shot(Clone)")
+        {
+            if (!destroyed && health <= 0)
+            {
+                this.GetComponent<Collider2D>().enabled = false;
+                Vector3 OriginalPosition = this.transform.localPosition;
+                Vector2 ShakeMagnitude = new Vector2(0.1f, 0.1f);
+                AsteriodShake.SetShakeParameters(4f, 1f);
+                AsteriodShake.SetShakeMagnitude(ShakeMagnitude, OriginalPosition);
+                DisableOrbit();
+                explode.Play();
+                destroyed = true;
+                asteriodSpeed = 0;
+            }
+        }
 
 
         AsteriodMovement otherAsteriod = collision.GetComponent<AsteriodMovement>();
@@ -92,4 +111,14 @@ public class AsteriodMovement : MonoBehaviour
         renderer.color = curColor;
     }
 
+    private void DisableOrbit()
+    {
+        this.GetComponent<OrbitMechanic>().enabled = false;
+    }
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+    }
 }
+

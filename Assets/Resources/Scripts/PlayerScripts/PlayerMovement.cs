@@ -151,6 +151,27 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
+        if(other.gameObject.tag == "Asteriod 2.0(Clone)"){
+            Vector3 planetPos = other.gameObject.transform.position;
+            Vector3 planetRad = other.ClosestPoint(gameObject.transform.position); 
+            Vector3 difPos = planetRad - planetPos;
+            difPos *= 1.10f;
+            difPos+=planetPos;
+            difPos.z=gameObject.transform.position.z;
+
+            if(currentVelocity.magnitude>0.5f*maxSpeed){
+                currentVelocity = -0.8f*currentVelocity;
+                gameObject.transform.position = difPos;
+                recoilStart();
+
+            }else{
+                Vector2 planetVel = other.gameObject.transform.parent.GetComponent<OrbitMechanic>().getPlanetVelocity();
+
+                currentVelocity = planetVel;
+                gameObject.transform.position = difPos;
+            }
+        }
+
         if(other.gameObject.tag == "LandingPad"){
             if(currentVelocity.magnitude>0.2f){
                 currentVelocity=currentVelocity.normalized *0.2f;

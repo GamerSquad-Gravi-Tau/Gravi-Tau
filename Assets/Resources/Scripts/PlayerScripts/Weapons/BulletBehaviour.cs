@@ -24,6 +24,7 @@ public class BulletBehaviour : MonoBehaviour
     {
         EnemyHealth e = collision.GetComponent<EnemyHealth>();
         BossHealth s = collision.GetComponent<BossHealth>();
+        AsteriodMovement a = collision.GetComponent<AsteriodMovement>();
         if (e != null)
         {
             e.TakeDamage(damage);
@@ -32,6 +33,11 @@ public class BulletBehaviour : MonoBehaviour
         if (s != null)
         {
             s.TakeDamage(damage);
+            Destroy(gameObject);
+        }
+        if (a != null)
+        {
+            a.TakeDamage(damage);
             Destroy(gameObject);
         }
         if (collision.gameObject.name == "SpaceAITurret" || collision.gameObject.name == "SpaceAITurret(Clone)")

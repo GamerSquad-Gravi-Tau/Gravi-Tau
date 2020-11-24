@@ -4910,7 +4910,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 969b2f9806f2ce645879a2a5f7aeb45d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ORBIT_CONST: 0.1
+  ORBIT_CONST: 5
   randomStart: 1
 --- !u!114 &5613354410399440902
 MonoBehaviour:

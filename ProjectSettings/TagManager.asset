@@ -9,6 +9,7 @@ TagManager:
   - EnemyProjectile
   - Enemy
   - Asteriod
+  - WorldBound
   layers:
   - Default
   - TransparentFX

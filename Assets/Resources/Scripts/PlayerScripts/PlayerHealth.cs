@@ -28,6 +28,12 @@ public class PlayerHealth : MonoBehaviour
         {
             SceneManager.LoadScene(2);
         }
+
+        if (health > 100)
+        {
+            health = 100;
+        }
+
     }
 
     public void TakeDamage(int damage)

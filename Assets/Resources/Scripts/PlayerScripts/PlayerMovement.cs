@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -11,6 +12,16 @@ public class PlayerMovement : MonoBehaviour
     private float maxSpeed = 3f;
 
     public float tempShipSpeed = 0.0f;
+    public Text boundsWarning;
+
+    public bool outOfBounds = false;
+    public bool blinkDown = true;
+    public float timeOutOfBounds = 0f;
+    public float blinkTime = 0f;
+    public PlayerHealth player;
+    public GameObject pointer;
+    private Vector3 Center;
+    private float pointerRotation = 300f;
 
     public float boostSpeed = 6f;
     public float boostDelay = 1f;
@@ -29,6 +40,10 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        boundsWarning.text = "Out of Bounds!";
+        boundsWarning.enabled = false;
+        Center = new Vector3(0, 0, 0);
+        player = gameObject.GetComponent<PlayerHealth>();
         shotControl = gameObject.GetComponent<PlayerWeaponsController>();
     }
 
@@ -57,6 +72,50 @@ public class PlayerMovement : MonoBehaviour
         Vector3 deltaPos = (currentVelocity+boostVel)*Time.smoothDeltaTime;
         gameObject.transform.position += deltaPos;
 
+        if (outOfBounds)
+        {
+
+            timeOutOfBounds += Time.smoothDeltaTime;
+            blinkTime += Time.smoothDeltaTime;
+            Vector3 centerDirection = new Vector3(pointer.transform.up.x * 0.5f,
+                                                  pointer.transform.up.y * 0.5f, 0);
+            PointAtCenter(Center, pointerRotation * Time.smoothDeltaTime);
+            pointer.transform.position = gameObject.transform.position + centerDirection;
+            if (blinkDown)
+            {
+                colorDown();
+            } else
+            {
+                colorUp();
+            }
+        }
+        if (timeOutOfBounds > 0.5f)
+        {
+            player.TakeDamage(2);
+            timeOutOfBounds = 0f;
+        }
+        if (blinkTime > 2f)
+        {
+            blinkDown = !blinkDown;
+            blinkTime = 0f;
+        }
+
+    }
+
+    private void colorDown()
+    {
+        SpriteRenderer renderer = pointer.GetComponent<SpriteRenderer>();
+        Color curColor = renderer.color;
+        curColor.a *= 0.985f;
+        renderer.color = curColor;
+    }
+
+    private void colorUp()
+    {
+        SpriteRenderer renderer = pointer.GetComponent<SpriteRenderer>();
+        Color curColor = renderer.color;
+        curColor.a *= 1.02f;
+        renderer.color = curColor;
     }
 
     private void accelerate(){
@@ -187,8 +246,27 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other) {
         if(other.gameObject.name=="WorldBound"){
-            Debug.Log("Left play area");
+            outOfBounds = true;
+            boundsWarning.enabled = true;
+            pointer = Instantiate(Resources.Load("Prefabs/OutOfBounds") as GameObject);
         }    
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.name == "WorldBound")
+        {
+            outOfBounds = false;
+            boundsWarning.enabled = false;
+            timeOutOfBounds = 0f;
+            Destroy(pointer);
+        }
+    }
+
+    private void PointAtCenter(Vector3 p, float r)
+    {
+        Vector3 v = p - pointer.transform.localPosition;
+        pointer.transform.up = Vector3.LerpUnclamped(pointer.transform.up, v, r);
     }
 
     private void BackToNormalBoost()

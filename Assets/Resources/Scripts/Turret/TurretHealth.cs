@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class TurretHealth : MonoBehaviour
 {
-    public int MyHealth = 150;
+    public int MyHealth = 200;
     public bool RightHealth;
     public bool LeftHealth;
     // Start is called before the first frame update
     void Start()
     {
-        MyHealth = 150;
+        MyHealth = 200;
     }
 
     // Update is called once per frame

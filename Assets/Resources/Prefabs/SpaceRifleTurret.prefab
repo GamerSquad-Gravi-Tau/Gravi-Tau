@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7495281656734261003}
   - component: {fileID: 7495281656734261002}
   - component: {fileID: 7495281656734260997}
+  - component: {fileID: -3200086594580095221}
   m_Layer: 0
   m_Name: SpaceRifleTurret
   m_TagString: Enemy
@@ -124,7 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cac2a91a7026670459a0b04d159d050f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MyHealth: 150
+  MyHealth: 200
   RightHealth: 0
   LeftHealth: 0
 --- !u!114 &7495281656734260997
@@ -140,6 +141,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StartAttack: 0
+--- !u!114 &-3200086594580095221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7495281656734261006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fda4bee0ee1643c419673d0bd6185aac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7495281658051659443
 GameObject:
   m_ObjectHideFlags: 0
@@ -187,7 +200,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 20
+  m_Radius: 15
 --- !u!114 &7495281658051659436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -261,6 +274,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1477285033969964608, guid: 2ef8be495c1cf604687f8664bffdf4f9,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1477285033969964608, guid: 2ef8be495c1cf604687f8664bffdf4f9,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1477285033969964609, guid: 2ef8be495c1cf604687f8664bffdf4f9,
         type: 3}

@@ -6,6 +6,7 @@ public class EnemyHealthDrop : MonoBehaviour
 {
     GameObject FindPlayer;
 
+    public AudioClip HealSoundEffect;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +23,7 @@ public class EnemyHealthDrop : MonoBehaviour
     {
         if (collision.gameObject.name == "PlayerShip")
         {
+            AudioSource.PlayClipAtPoint(HealSoundEffect, transform.position, 2f);
             FindPlayer.GetComponent<PlayerHealth>().health += 20;
             Destroy(this.gameObject);
         }

@@ -79,7 +79,7 @@ public class SmallBossBehavoir : MonoBehaviour
     {
         UpdateChildPosition();
 
-        if (this.transform.childCount <= 1 && this.GetComponentInChildren<SmallBossBody>().SmallBossHealth <= 0)
+        if (this.transform.childCount <= 2 && this.GetComponentInChildren<SmallBossBody>().SmallBossHealth <= 0)
         {
             Destroy(this.gameObject);
         }

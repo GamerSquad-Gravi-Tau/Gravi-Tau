@@ -50,7 +50,7 @@ public class BlackHoleDamagePlayer : MonoBehaviour
                 }
             }
         }
-        Player.GetComponent<PlayerMovement>().allowBoost = false;
+
 
         if (collision.gameObject.tag == "Enemy")
         {

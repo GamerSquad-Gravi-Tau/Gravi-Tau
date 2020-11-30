@@ -18,8 +18,8 @@ public class SpaceStationHealth : MonoBehaviour
     {
         health = 450;
         maxHealth = health;
-        healthBar = transform.parent.GetChild(3).GetComponent<Transform>();
-        healthBarBacking = transform.parent.GetChild(4).GetComponent<Transform>();
+        healthBar = transform.parent.GetChild(2).GetComponent<Transform>();
+        healthBarBacking = transform.parent.GetChild(3).GetComponent<Transform>();
         maxHealthBar = healthBar.localScale.x;
     }
 

@@ -9,7 +9,7 @@ public class MinimapController : MonoBehaviour
 
     private float aspect;
 
-    public float minimapPercentageY = 0.2f;
+    public float minimapPercentageY = 0.25f;
     public float offset = 0.01f;
 
     // Start is called before the first frame update

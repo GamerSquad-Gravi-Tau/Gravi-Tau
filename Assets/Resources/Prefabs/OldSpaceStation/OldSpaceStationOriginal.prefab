@@ -73,8 +73,8 @@ GameObject:
   - component: {fileID: 731226943902909525}
   - component: {fileID: -4604009237060617318}
   m_Layer: 0
-  m_Name: SpaceStationOriginal
-  m_TagString: Untagged
+  m_Name: OldSpaceStationOriginal
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -157,6 +157,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StartAttack: 0
+  StopSpawnEnemy: 0
+  DestoryAllSatellites: 0
   RightTurretDead: 0
   LeftTurretDead: 0
 --- !u!114 &7358109083855004998

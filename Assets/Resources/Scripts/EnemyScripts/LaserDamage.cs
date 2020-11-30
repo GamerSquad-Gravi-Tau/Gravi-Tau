@@ -14,5 +14,9 @@ public class LaserDamage : MonoBehaviour
             p.TakeDamage(damage);
             Destroy(gameObject);
         }
+        if (collision.gameObject.tag == "SurfaceCollider")
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

@@ -6,16 +6,41 @@ using UnityEngine;
 public class SpaceStationHealth : MonoBehaviour
 {
     public int health;
+
+    public float healthbarDisplacement = 0.3f;
+    private Transform healthBar;
+    private Transform healthBarBacking;
+    private float maxHealthBar; 
+    private int maxHealth;
+
     // Start is called before the first frame update
     void Start()
     {
         health = 400;
+        maxHealth = health;
+        healthBar = transform.parent.GetChild(3).GetComponent<Transform>();
+        healthBarBacking = transform.parent.GetChild(4).GetComponent<Transform>();
+        maxHealthBar = healthBar.localScale.x;
     }
 
     // Update is called once per frame
     void Update()
     {
         checkHealth();
+        updateHealthBar();
+    }
+
+    private void updateHealthBar(){
+        if (health<=0 && healthBar!=null){
+            Destroy(healthBar.gameObject);
+            Destroy(healthBarBacking.gameObject);
+        }
+
+        healthBar.localScale = new Vector3(((float)health/(float)maxHealth)*maxHealthBar,healthBar.localScale.y,1);
+        healthBar.rotation = Quaternion.Euler(0f,0f,0f);
+        healthBar.position = transform.position + new Vector3(0f,healthbarDisplacement,0f);
+        healthBarBacking.rotation = Quaternion.Euler(0f,0f,0f);
+        healthBarBacking.position = transform.position + new Vector3(0f,healthbarDisplacement,0f);
     }
 
     private void checkHealth()

@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
 
     private float recoilTime = 0f;
     private float totalRecoil = 0.75f;
+    private bool recoiled = false;
 
     public bool allowBoost = true;
 
@@ -41,12 +42,17 @@ public class PlayerMovement : MonoBehaviour
         Vector3 faceVector = mousePos-gameObject.transform.position;
         gameObject.transform.up=faceVector.normalized;  
 
-        if(recoilTime>totalRecoil){
+        if(recoilTime>totalRecoil && recoiled){
+            allowBoost = true;
+            recoiled = false;
+        }
+
+        if(!recoiled){
             accelerate();
-            allowBoost=true;
         }else{
             recoilTime+=Time.smoothDeltaTime;
         }
+
         
         Vector2 boostVel = Vector2.zero;
         if (allowBoost){
@@ -103,6 +109,7 @@ public class PlayerMovement : MonoBehaviour
 
 
     public void recoilStart(){
+        recoiled = true;
         allowBoost = false;
         recoilTime = 0f;
 
@@ -134,7 +141,7 @@ public class PlayerMovement : MonoBehaviour
             Vector3 planetPos = other.gameObject.transform.position;
             Vector3 planetRad = other.ClosestPoint(gameObject.transform.position); 
             Vector3 difPos = planetRad - planetPos;
-            difPos *= 1.10f;
+            difPos *= 1.15f;
             difPos+=planetPos;
             difPos.z=gameObject.transform.position.z;
 

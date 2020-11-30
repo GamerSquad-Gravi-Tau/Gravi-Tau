@@ -9,6 +9,7 @@ public class PlayerHealth : MonoBehaviour
     //public Text healthText;
     public int health;
     public Slider s;
+    public Text t;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +20,7 @@ public class PlayerHealth : MonoBehaviour
     void Update()
     {
         s.value = health;
+        t.text = System.String.Format("Health:   {0}/100",health);
         checkHealth();
     }
 

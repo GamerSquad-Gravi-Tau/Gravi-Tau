@@ -44,35 +44,7 @@ public class BulletBehaviour : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-        if (collision.gameObject.name == "SpaceStationTurret" || collision.gameObject.name == "SpaceStationTurret(Clone)")
-        {
-            Destroy(this.gameObject);
-        }
-        if (collision.gameObject.name == "SpaceStation" || collision.gameObject.name == "SpaceStation(Clone)")
-        {
-            Destroy(this.gameObject);
-        }
-        if (collision.gameObject.name == "SmallBossTurret" || collision.gameObject.name == "SmallBossTurret(Clone)")
-        {
-            Destroy(this.gameObject);
-        }
-        if (collision.gameObject.name == "SpiralBulletShooter" || collision.gameObject.name == "SpiralBulletShooter(Clone)")
-        {
-            Destroy(this.gameObject);
-        }
-        if (collision.gameObject.name == "SmallBossShotGunShooter" || collision.gameObject.name == "SmallBossShotGunShooter(Clone)")
-        {
-            Destroy(this.gameObject);
-        }
-        if (collision.gameObject.name == "SmallBossBody" || collision.gameObject.name == "SmallBossBody(Clone)")
-        {
-            Destroy(this.gameObject);
-        }
-        if (collision.gameObject.name == "SpaceShootGunTurret" || collision.gameObject.name == "SpaceShootGunTurret(Clone)")
-        {
-            Destroy(this.gameObject);
-        }
-        if (collision.gameObject.name == "SpaceRifleTurret" || collision.gameObject.name == "SpaceRifleTurret(Clone)")
+        if (collision.gameObject.tag == "SurfaceCollider")
         {
             Destroy(this.gameObject);
         }

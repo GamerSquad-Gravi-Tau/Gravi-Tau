@@ -5,7 +5,7 @@ using UnityEngine;
 public class LaserScript : MonoBehaviour
 {
     private CameraBounds boundObject;
-    public float laserSpeed =1f;
+    public float laserSpeed = 3f;
 
     void Start(){
         boundObject = Camera.main.GetComponent<CameraBounds>();

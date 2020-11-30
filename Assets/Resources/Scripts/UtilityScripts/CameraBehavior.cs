@@ -5,7 +5,8 @@ using UnityEngine;
 public class CameraBehavior : MonoBehaviour
 {
     private float min = 2f;
-    private float max = 7.5f;
+    //private float max = 7.5f;
+    private float max = 6f;
     private float sensativity = 3f;
     private Transform player;
 
@@ -32,7 +33,5 @@ public class CameraBehavior : MonoBehaviour
         Vector3 nextPos = player.position;
         nextPos.z=gameObject.transform.position.z;
         gameObject.transform.position=nextPos;
-
-        
     }
 }

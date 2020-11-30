@@ -5,6 +5,11 @@ using UnityEngine;
 public class PlayerWeaponsController : MonoBehaviour
 {
     public Transform firePoint;
+
+    public Transform firePointDoubleLeft;
+    public Transform firePointDoubleRight;
+    public Transform firePointTribleMiddle;
+
     public GameObject homing;
     public GameObject bullet;
 
@@ -19,6 +24,8 @@ public class PlayerWeaponsController : MonoBehaviour
     public AudioClip ShotSoundEffect;
     public AudioClip MissileSoundEffect;
 
+    public int WeaponMode = 0;
+
     // Update is called once per frame
     void Update()
     {
@@ -27,9 +34,41 @@ public class PlayerWeaponsController : MonoBehaviour
             {
                 if (Input.GetMouseButton(0))
                 {
-                    AudioSource.PlayClipAtPoint(ShotSoundEffect, transform.position, 0.5f);
-                    shootBullet();
-                    bulletCooldown=0f;
+                    if (WeaponMode == 0)
+                    {
+                        AudioSource.PlayClipAtPoint(ShotSoundEffect, transform.position, 0.5f);
+                        shootBullet();
+                        bulletCooldown = 0f;
+                    }
+
+                    if (WeaponMode == 1)
+                    {
+                        AudioSource.PlayClipAtPoint(ShotSoundEffect, transform.position, 0.5f);
+                        shootDoubleBullet();
+                        bulletCooldown = 0f;
+                    }
+
+                    if (WeaponMode == 2)
+                    {
+                        AudioSource.PlayClipAtPoint(ShotSoundEffect, transform.position, 0.5f);
+                        shootTribleBullet();
+                        bulletCooldown = 0f;
+                    }
+
+
+                    if (WeaponMode == 3)
+                    {
+                        AudioSource.PlayClipAtPoint(ShotSoundEffect, transform.position, 0.5f);
+                        shootShootGunBullet();
+                        bulletCooldown = 0f;
+                    }
+
+                    if (WeaponMode >= 4)
+                    {
+                        AudioSource.PlayClipAtPoint(ShotSoundEffect, transform.position, 0.5f);
+                        shootShootSprialBullet();
+                        bulletCooldown = 0f;
+                    }
                 }
             }else{
 				bulletCooldown+=Time.smoothDeltaTime;
@@ -55,12 +94,45 @@ public class PlayerWeaponsController : MonoBehaviour
         Instantiate(bullet, firePoint.position, firePoint.rotation);
     }
 
+    void shootDoubleBullet()
+    {
+        Instantiate(bullet, firePointDoubleLeft.position, firePointDoubleLeft.rotation);
+        Instantiate(bullet, firePointDoubleRight.position, firePointDoubleRight.rotation);
+    }
+
+    void shootTribleBullet()
+    {
+        Instantiate(bullet, firePointTribleMiddle.position, firePointTribleMiddle.rotation);
+        Instantiate(bullet, firePointDoubleLeft.position, firePointDoubleLeft.rotation * Quaternion.Euler(0f, 0f, 4f));
+        Instantiate(bullet, firePointDoubleRight.position, firePointDoubleRight.rotation * Quaternion.Euler(0f, 0f, -4f));
+    }
+
+    void shootShootGunBullet()
+    {
+        Instantiate(bullet, firePointTribleMiddle.position, firePointTribleMiddle.rotation);
+        Instantiate(bullet, firePointDoubleLeft.position, firePointDoubleLeft.rotation * Quaternion.Euler(0f, 0f, 8f));
+        Instantiate(bullet, firePointDoubleRight.position, firePointDoubleRight.rotation * Quaternion.Euler(0f, 0f, -8f));
+        
+        Instantiate(bullet, firePointDoubleLeft.position, firePointDoubleLeft.rotation * Quaternion.Euler(0f, 0f, 15f));
+        Instantiate(bullet, firePointDoubleRight.position, firePointDoubleRight.rotation * Quaternion.Euler(0f, 0f, -15f));
+    }
+
+    void shootShootSprialBullet()
+    {
+        Instantiate(bullet, firePointTribleMiddle.position, firePointTribleMiddle.rotation);
+        Instantiate(bullet, firePointDoubleLeft.position, firePointDoubleLeft.rotation * Quaternion.Euler(0f, 0f, 4f));
+        Instantiate(bullet, firePointDoubleRight.position, firePointDoubleRight.rotation * Quaternion.Euler(0f, 0f, -4f));
+
+        Instantiate(bullet, firePointDoubleLeft.position, firePointDoubleLeft.rotation * Quaternion.Euler(0f, 0f, 90f));
+        Instantiate(bullet, firePointDoubleRight.position, firePointDoubleRight.rotation * Quaternion.Euler(0f, 0f, -90f));
+
+        Instantiate(bullet, firePointDoubleLeft.position, firePointDoubleLeft.rotation * Quaternion.Euler(0f, 0f, 180f));
+        Instantiate(bullet, firePointDoubleRight.position, firePointDoubleRight.rotation * Quaternion.Euler(0f, 0f, -180f));
+
+    }
+
     void shootHoming()
     {
         Instantiate(homing, firePoint.position, firePoint.rotation);
-    }
-
-    private void playShotSoundEffect()
-    {
     }
 }

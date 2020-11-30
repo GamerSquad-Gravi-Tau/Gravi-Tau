@@ -10,7 +10,7 @@ public class BulletBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        damage = 30;
+        damage = 20;
         rb.velocity = (Vector3)PlayerMovement.retVel() + transform.up * speed;
     }
 
@@ -40,7 +40,7 @@ public class BulletBehaviour : MonoBehaviour
             a.TakeDamage(damage);
             Destroy(gameObject);
         }
-        if (collision.gameObject.name == "SpaceAITurret" || collision.gameObject.name == "SpaceAITurret(Clone)")
+        if (collision.gameObject.tag == "Enemy")
         {
             Destroy(this.gameObject);
         }
@@ -73,6 +73,14 @@ public class BulletBehaviour : MonoBehaviour
             Destroy(this.gameObject);
         }
         if (collision.gameObject.name == "SpaceRifleTurret" || collision.gameObject.name == "SpaceRifleTurret(Clone)")
+        {
+            Destroy(this.gameObject);
+        }
+        if (collision.gameObject.tag == "BlackHoleSurfaceCollider")
+        {
+            Destroy(this.gameObject);
+        }
+        if (collision.gameObject.tag == "SurfaceCollider")
         {
             Destroy(this.gameObject);
         }

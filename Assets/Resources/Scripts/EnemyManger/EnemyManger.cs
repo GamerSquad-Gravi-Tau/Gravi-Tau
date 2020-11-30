@@ -4,45 +4,95 @@ using UnityEngine;
 
 public class EnemyManger : MonoBehaviour
 {
-    int OneTime = 0;
-    int OneBoss = 0;
-
+    private int OneBoss = 0;
+    private int CheatMode = 0;
     public int DestoriedEnemyNumber;
+    private int One = 1;
     // Start is called before the first frame update
     void Start()
     {
+        SpawnSingleEnemy();
+        SpawnFourEnemyWithTurret();
+        SpawnSpaceTurret();
+        SpawnSpaceFleet();
+        SpawnEnemyDrop();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(OneTime == 0)
+        if (DestoriedEnemyNumber == 5 && One == 1)
         {
-            SpawnSingleEnemy();
-            SpawnFourEnemyWithTurret();
-            SpawnSpaceTurret();
-            SpawnSpaceFleet();
-            SpawnEnemyDrop();
-            OneTime++;
+            GameObject Player = GameObject.Find("PlayerShip");
+            GameObject UpdateWeapon = Instantiate(Resources.Load("Prefabs/Weapon_Drop") as GameObject);
+            UpdateWeapon.transform.position = Player.transform.position + new Vector3(5f, 0f, 0f);
+            One++;
         }
 
-        //if ((this.transform.childCount - 10) <= 10 && OneBoss == 0)
-        //{
-        //    GameObject NewBoss = Instantiate(Resources.Load("Prefabs/Boss") as GameObject);
-        //    NewBoss.transform.position = GetRandomPosition();
-        //    OneBoss++;
-        //}
-        if (DestoriedEnemyNumber >= 35 && OneBoss == 0)
+        if (DestoriedEnemyNumber == 20 && One == 2)
         {
-            //GameObject NewBoss = Instantiate(Resources.Load("Prefabs/SmallBoss") as GameObject);
-            //NewBoss.transform.position = GetRandomPosition();
+            GameObject Player = GameObject.Find("PlayerShip");
+            GameObject UpdateWeapon = Instantiate(Resources.Load("Prefabs/Weapon_Drop") as GameObject);
+            UpdateWeapon.transform.position = Player.transform.position + new Vector3(5f, 0f, 0f);
+            One++;
+        }
+
+        if (DestoriedEnemyNumber == 50 && One == 3)
+        {
+            GameObject Player = GameObject.Find("PlayerShip");
+            GameObject UpdateWeapon = Instantiate(Resources.Load("Prefabs/Weapon_Drop") as GameObject);
+            UpdateWeapon.transform.position = Player.transform.position + new Vector3(0f, 3f, 0f);
+            One++;
+        }
+
+        if (DestoriedEnemyNumber == 100 && One == 4)
+        {
+            GameObject Player = GameObject.Find("PlayerShip");
+            GameObject UpdateWeapon = Instantiate(Resources.Load("Prefabs/Weapon_Drop") as GameObject);
+            UpdateWeapon.transform.position = Player.transform.position + new Vector3(0f, 3f, 0f);
+            One++;
+        }
+
+        if (DestoriedEnemyNumber >= 30 && OneBoss == 0)
+        {
+            GameObject NewBoss = Instantiate(Resources.Load("Prefabs/SmallBoss/SmallBoss") as GameObject);
+            NewBoss.transform.position = new Vector3(40, 0, 0);
             OneBoss++;
+        }
+
+        if (Input.GetKeyDown("c") && CheatMode == 0)
+        {
+            CheatMode = 1;
+        }
+
+        if (Input.GetKeyDown("h") && CheatMode == 1)
+        {
+            CheatMode = 2;
+        }
+
+        if (Input.GetKeyDown("e") && CheatMode == 2)
+        {
+            CheatMode = 3;
+        }
+
+        if (Input.GetKeyDown("a") && CheatMode == 3)
+        {
+            CheatMode = 4;
+        }
+
+        if (Input.GetKeyDown("t") && CheatMode == 4)
+        {
+            GameObject Player;
+            Player = GameObject.Find("PlayerShip");
+            Player.GetComponent<PlayerHealth>().health += 1000;
+
+            CheatMode = 5;
         }
     }
 
     private void SpawnSingleEnemy()
     {
-        for (int i = 0; i < 20; i++)//20 enemyies
+        for (int i = 0; i < 60; i++)//20 enemyies
         {
             GameObject NewEnemyOne = Instantiate(Resources.Load("Prefabs/ChaseEnemy") as GameObject);
             NewEnemyOne.GetComponent<EnemyChase>().despawn = false;
@@ -53,7 +103,7 @@ public class EnemyManger : MonoBehaviour
 
     private void SpawnSpaceTurret()
     {
-        for (int i = 0; i < 5; i++)//15 enemies
+        for (int i = 0; i < 15; i++)//15 enemies
         {
             GameObject NewEnemyTurret = Instantiate(Resources.Load("Prefabs/SpaceAITurret") as GameObject);
             NewEnemyTurret.transform.parent = this.gameObject.transform;
@@ -66,12 +116,16 @@ public class EnemyManger : MonoBehaviour
             GameObject NewRifleTurret = Instantiate(Resources.Load("Prefabs/SpaceRifleTurret") as GameObject);
             NewRifleTurret.transform.parent = this.gameObject.transform;
             NewRifleTurret.transform.position = GetRandomPosition();
+
+            GameObject NewSpiralTurret = Instantiate(Resources.Load("Prefabs/SpiralBulletAIShooter") as GameObject);
+            NewSpiralTurret.transform.parent = this.gameObject.transform;
+            NewSpiralTurret.transform.position = GetRandomPosition();
         }
     }
 
     private void SpawnFourEnemyWithTurret()
     {
-        for (int i = 0; i < 5; i++)//25 enemies
+        for (int i = 0; i < 10; i++)//25 enemies
         {
             Vector3 R = GetRandomPosition();
 
@@ -103,7 +157,7 @@ public class EnemyManger : MonoBehaviour
 
     private void SpawnSpaceFleet()
     {
-        for (int i = 0; i < 5; i++)//5 space station
+        for (int i = 0; i < 10; i++)//5 space station
         {
             Vector3 R = GetRandomPosition();
 
@@ -115,7 +169,7 @@ public class EnemyManger : MonoBehaviour
 
     private void SpawnEnemyDrop()
     {
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 20; i++)
         {
             Vector3 R = GetRandomPosition();
 

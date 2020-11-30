@@ -21,7 +21,7 @@ public class SmallBossBody : MonoBehaviour
     {
         if (collision.gameObject.name == "shot" || collision.gameObject.name == "shot(Clone)")
         {
-            if (this.GetComponentInParent<SmallBossBehavoir>().transform.childCount <= 1)
+            if (this.GetComponentInParent<SmallBossBehavoir>().transform.childCount <= 2)
             {
                 SmallBossHealth--;
             }

@@ -41,7 +41,7 @@ public class SpaceStationBehavior : MonoBehaviour
         RestoreStationInterval = 60f;
         ChangeModeInterval = 5f;
         SpwanEnemyTimeStamp = 0f;
-        SpwanEnemyInterval = 10f;
+        SpwanEnemyInterval = 20f;
 
         SatellitOne = Instantiate(Resources.Load("Prefabs/SpaceStationSatellit") as GameObject);
         SatellitTwo = Instantiate(Resources.Load("Prefabs/SpaceStationSatellit") as GameObject);

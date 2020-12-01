@@ -31,7 +31,7 @@ public class BlackHoleDamagePlayer : MonoBehaviour
 
         if (collision.gameObject.tag == "Enemy")
         {
-            collision.gameObject.GetComponent<EnemyInBlackHole>().DestroyThisGameObject = true;
+            //collision.gameObject.GetComponent<EnemyInBlackHole>().DestroyThisGameObject = true;
         }
     }
 
@@ -54,7 +54,7 @@ public class BlackHoleDamagePlayer : MonoBehaviour
 
         if (collision.gameObject.tag == "Enemy")
         {
-            collision.gameObject.GetComponent<EnemyInBlackHole>().DestroyThisGameObject = true;
+            //collision.gameObject.GetComponent<EnemyInBlackHole>().DestroyThisGameObject = true;
         }
     }
 

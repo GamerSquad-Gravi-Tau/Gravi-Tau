@@ -10,6 +10,7 @@ TagManager:
   - Enemy
   - Asteriod
   - BlackHoleSurfaceCollider
+  - WorldBound
   layers:
   - Default
   - TransparentFX

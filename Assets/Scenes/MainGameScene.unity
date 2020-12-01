@@ -2001,11 +2001,9 @@ MonoBehaviour:
 
     Shift = Boost
 
-    ESC = Quit
 
 
-    ~Player faces the direction
-    of the mouse~'
+    ~Player faces the direction of the mouse~'
 --- !u!222 &435773790
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8609,7 +8607,7 @@ RectTransform:
   - {fileID: 577258970}
   - {fileID: 1982401983}
   m_Father: {fileID: 1345996463}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}

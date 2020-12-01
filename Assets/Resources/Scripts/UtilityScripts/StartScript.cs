@@ -16,7 +16,7 @@ public class StartScript : MonoBehaviour
 
     public void onClickControls()
     {
-        SceneManager.LoadScene(4);
+        SceneManager.LoadScene(3);
     }
     public void backToMenu()
     {

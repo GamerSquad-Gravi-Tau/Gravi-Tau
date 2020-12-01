@@ -204,10 +204,13 @@ MonoBehaviour:
     Right click = Shoot homing
     missiles
 
-    ESC = Quit
+    Shift (Hold) = Boost
+
+    ESC = Pause menu
 
 
-    ~Player faces the direction of the mouse~'
+    ~Player faces
+    the direction of the mouse~'
 --- !u!222 &205984048
 CanvasRenderer:
   m_ObjectHideFlags: 0

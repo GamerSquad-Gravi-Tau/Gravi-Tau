@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PauseScript : MonoBehaviour
 {
-    public bool paused = false;
+    public static bool paused = false;
 
     // Update is called once per frame
     void Update()

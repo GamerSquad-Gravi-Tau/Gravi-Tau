@@ -9,7 +9,7 @@ public class PlayerCoin : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PlayerWallet = 10;
+        PlayerWallet = 0;
     }
 
     // Update is called once per frame

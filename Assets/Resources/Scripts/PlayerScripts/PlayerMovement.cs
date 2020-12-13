@@ -167,11 +167,11 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-    public void recoilStart(){
+    public void recoilStart(float speed){
         recoiled = true;
         allowBoost = false;
         recoilTime = 0f;
-
+        totalRecoil = speed*0.75f;
     }
     
     public Vector2 getVelocity(){
@@ -200,21 +200,12 @@ public class PlayerMovement : MonoBehaviour
             Vector3 planetPos = other.gameObject.transform.position;
             Vector3 planetRad = other.ClosestPoint(gameObject.transform.position); 
             Vector3 difPos = planetRad - planetPos;
-            difPos *= 1.15f;
+            difPos+=difPos.normalized*5f;
             difPos+=planetPos;
             difPos.z=gameObject.transform.position.z;
-
-            if(currentVelocity.magnitude>0.5f*maxSpeed){
-                currentVelocity = -0.8f*currentVelocity;
-                gameObject.transform.position = difPos;
-                recoilStart();
-
-            }else{
-                Vector2 planetVel = other.gameObject.transform.parent.GetComponent<OrbitMechanic>().getPlanetVelocity();
-
-                currentVelocity = planetVel;
-                gameObject.transform.position = difPos;
-            }
+            currentVelocity = -0.8f*currentVelocity;
+            recoilStart(currentVelocity.magnitude/maxSpeed);
+            gameObject.transform.position = difPos;
         }
 
         if(other.gameObject.tag == "Asteriod 2.0(Clone)"){
@@ -225,17 +216,9 @@ public class PlayerMovement : MonoBehaviour
             difPos+=planetPos;
             difPos.z=gameObject.transform.position.z;
 
-            if(currentVelocity.magnitude>0.5f*maxSpeed){
-                currentVelocity = -0.8f*currentVelocity;
-                gameObject.transform.position = difPos;
-                recoilStart();
-
-            }else{
-                Vector2 planetVel = other.gameObject.transform.parent.GetComponent<OrbitMechanic>().getPlanetVelocity();
-
-                currentVelocity = planetVel;
-                gameObject.transform.position = difPos;
-            }
+            currentVelocity = -0.8f*currentVelocity;    
+            recoilStart(currentVelocity.magnitude/maxSpeed);
+            gameObject.transform.position = difPos;
         }
 
         if(other.gameObject.tag == "LandingPad"){

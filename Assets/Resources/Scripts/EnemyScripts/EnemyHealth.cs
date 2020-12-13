@@ -45,9 +45,9 @@ public class EnemyHealth : MonoBehaviour
     private void updateHealthBar(){
         healthBar.localScale = new Vector3(((float)health/(float)maxHealth)*maxHealthBar,healthBar.localScale.y,1);
         healthBar.rotation = Quaternion.Euler(0f,0f,0f);
-        healthBar.position = transform.position + new Vector3(0f,healthbarDisplacement,0f);
+        healthBar.position = transform.position +  transform.localScale.y * new Vector3(0f,healthbarDisplacement,0f);
         healthBarBacking.rotation = Quaternion.Euler(0f,0f,0f);
-        healthBarBacking.position = transform.position + new Vector3(0f,healthbarDisplacement,0f);
+        healthBarBacking.position = transform.position +  transform.localScale.y * new Vector3(0f,healthbarDisplacement,0f);
     }
 
     private void Die()

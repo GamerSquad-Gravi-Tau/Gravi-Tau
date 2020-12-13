@@ -9,7 +9,7 @@ public class TurretLaserScript : MonoBehaviour
 
     void Start()
     {
-        laserSpeed = 17f;
+        laserSpeed = 10f;
         boundObject = Camera.main.GetComponent<CameraBounds>();
     }
 

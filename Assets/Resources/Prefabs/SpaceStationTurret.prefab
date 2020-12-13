@@ -146,7 +146,7 @@ MonoBehaviour:
   MyHealth: 200
   RightHealth: 0
   LeftHealth: 0
-  healthbarDisplacement: 0.3
+  healthbarDisplacement: 2
 --- !u!114 &-6545536251998627991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,6 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fda4bee0ee1643c419673d0bd6185aac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DestroyThisGameObject: 0
 --- !u!1 &1188392361608861754
 GameObject:
   m_ObjectHideFlags: 0
@@ -264,7 +265,7 @@ PrefabInstance:
     - target: {fileID: 7150003920498258060, guid: c3a1aa4575d082c45b1884949d8ef3e2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7150003920498258060, guid: c3a1aa4575d082c45b1884949d8ef3e2,
         type: 3}
@@ -349,7 +350,7 @@ PrefabInstance:
     - target: {fileID: 2136646765529674831, guid: 65143d10944bf344689aed1134295a94,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2136646765529674831, guid: 65143d10944bf344689aed1134295a94,
         type: 3}

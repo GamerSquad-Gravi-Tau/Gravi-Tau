@@ -25,7 +25,7 @@ public class BlackHoleDamagePlayer : MonoBehaviour
     {
         if (collision.gameObject.name == "PlayerShip")
         {
-            Player.GetComponent<PlayerHealth>().health -= 10;
+            Player.GetComponent<PlayerHealth>().health -= 25;
             TimeStamp = Time.realtimeSinceStartup;
         }
 

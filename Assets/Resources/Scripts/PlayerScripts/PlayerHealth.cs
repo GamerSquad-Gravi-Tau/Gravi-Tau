@@ -11,11 +11,13 @@ public class PlayerHealth : MonoBehaviour
     public Slider s;
     public Text t;
 
+
     public SpriteRenderer sp;
     public bool isDamaged = false;
     public bool blinkUp = true;
     public float damageTime = 0f;
     public float blinkTime = 0f;
+
     // Start is called before the first frame update
     void Start()
     {

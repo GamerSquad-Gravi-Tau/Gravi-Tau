@@ -7,6 +7,8 @@ public class MinimapController : MonoBehaviour
     private Camera mCamera;
     private Camera minimapCam;
 
+    //private RectTransform minimapBack;
+
     private float aspect;
 
     public float minimapPercentageY = 0.25f;
@@ -16,6 +18,7 @@ public class MinimapController : MonoBehaviour
     void Start()
     {
         minimapCam = gameObject.GetComponent<Camera>();
+        //minimapBack = transform.GetChild(0).GetComponent<RectTransform>();
         mCamera = Camera.main;
         aspect = mCamera.aspect;
         UpdateMiniMapSize();    
@@ -32,5 +35,6 @@ public class MinimapController : MonoBehaviour
 
     private void UpdateMiniMapSize(){
         minimapCam.rect = new Rect(offset,offset,offset+minimapPercentageY*(1/aspect),offset+minimapPercentageY);
+        //minimapBack.anchorMax = new Vector2(2*offset+minimapPercentageY*(1/aspect),2*offset+minimapPercentageY);
     }
 }

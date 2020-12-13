@@ -14,10 +14,22 @@ public class TurretAISpria : MonoBehaviour
     private float ShootShortInterval = 0.005f;
     private float ShootLongInterval = 1.5f;
     private int LongShootParameter = 0;
+
+    public float healthbarDisplacement = 0.3f;
+    private Transform healthBar;
+    private Transform healthBarBacking;
+    private float maxHealthBar; 
+    private int maxHealth;
+
     // Start is called before the first frame update
     void Start()
     {
         Player = GameObject.Find("PlayerShip");
+
+        maxHealth = MyHealth;
+        healthBar = transform.GetChild(2).GetComponent<Transform>();
+        healthBarBacking = transform.GetChild(3).GetComponent<Transform>();
+        maxHealthBar = healthBar.localScale.x;
     }
 
     // Update is called once per frame
@@ -65,6 +77,15 @@ public class TurretAISpria : MonoBehaviour
                 LongShootParameter = 0;
             }
         }
+        updateHealthBar();
+    }
+
+    private void updateHealthBar(){
+        healthBar.localScale = new Vector3(((float)MyHealth/(float)maxHealth)*maxHealthBar,healthBar.localScale.y,1);
+        healthBar.rotation = Quaternion.Euler(0f,0f,0f);
+        healthBar.position = transform.position +  transform.localScale.y * new Vector3(0f,healthbarDisplacement,0f);
+        healthBarBacking.rotation = Quaternion.Euler(0f,0f,0f);
+        healthBarBacking.position = transform.position +  transform.localScale.y * new Vector3(0f,healthbarDisplacement,0f);
     }
 
 

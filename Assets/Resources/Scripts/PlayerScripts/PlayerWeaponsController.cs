@@ -16,8 +16,9 @@ public class PlayerWeaponsController : MonoBehaviour
     public float timeBetweenBullet = 0.1f;
     private float bulletCooldown = 0.1f;
 
-    public float timeBetweenHoming = 1f;
-    private float homingCooldown = 1f;
+    private float[] timeBetweenHoming = {3f,2.5f,2f,1.5f,1f,1f};
+    private float homingCooldown = 10f;
+    private float[] missileDamageMult = {1f,1.3f,1.7f,2f,2.5f,2.5f};
 
     public bool enableFire=true;
 
@@ -73,8 +74,7 @@ public class PlayerWeaponsController : MonoBehaviour
             }else{
 				bulletCooldown+=Time.smoothDeltaTime;
 			}
-
-            if(homingCooldown>timeBetweenHoming)
+            if(homingCooldown>timeBetweenHoming[WeaponMode])
             {
                 if (Input.GetMouseButton(1))
                 {
@@ -133,6 +133,8 @@ public class PlayerWeaponsController : MonoBehaviour
 
     void shootHoming()
     {
-        Instantiate(homing, firePoint.position, firePoint.rotation);
+        GameObject missile = Instantiate(homing, firePoint.position, firePoint.rotation);
+        int d = missile.GetComponent<HomingBehaviour>().damage;
+        missile.GetComponent<HomingBehaviour>().damage = (int)(d * missileDamageMult[WeaponMode]); 
     }
 }

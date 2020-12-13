@@ -30,6 +30,7 @@ public class SmallBossBehavoir : MonoBehaviour
     private GameObject LeftShootGun;
     public bool LeftShootGunAlive = true;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -72,6 +73,7 @@ public class SmallBossBehavoir : MonoBehaviour
         LeftShootGun.transform.parent = this.gameObject.transform;
         LeftShootGun.transform.position = this.transform.position + new Vector3(-1.5f, -2f, 0f);
         LeftShootGun.GetComponent<SmallBossShotGunShooter>().Right = false;
+
     }
 
     // Update is called once per frame

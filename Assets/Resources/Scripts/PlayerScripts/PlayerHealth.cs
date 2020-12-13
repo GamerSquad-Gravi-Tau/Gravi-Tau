@@ -37,7 +37,7 @@ public class PlayerHealth : MonoBehaviour
             if (blinkUp)
             {
                 redUp();
-            } else
+            } else 
             {
                 redDown();
             }
@@ -46,6 +46,9 @@ public class PlayerHealth : MonoBehaviour
         {
             isDamaged = false;
             damageTime = 0f;
+            Color curColor = sp.color;
+            curColor.g = 1f;
+            curColor.b = 0f;
         }
         if (blinkTime > 1f)
         {
@@ -76,7 +79,7 @@ public class PlayerHealth : MonoBehaviour
         blinkTime = 0f;
         Color curColor = sp.color;
         curColor.g = 1f;
-        curColor.b = 1f;
+        curColor.b = 0f;
         sp.color = curColor;
         blinkUp = true;
     }

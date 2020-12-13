@@ -132,6 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e10a2c0015c2d64ba11acbc744a6e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  foundTarget: 0
 --- !u!1 &4664069927767738402
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,5 +253,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   speed: 5
-  damage: 0
+  damage: 35
   rSpeed: 200

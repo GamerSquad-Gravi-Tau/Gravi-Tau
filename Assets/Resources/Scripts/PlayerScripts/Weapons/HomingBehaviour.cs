@@ -15,7 +15,7 @@ public class HomingBehaviour : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        damage = 10;
+        //damage = 10;
         hasTarget = false;
         speed += Vector2.Dot(PlayerMovement.retVel(),(Vector2)transform.up);
     }

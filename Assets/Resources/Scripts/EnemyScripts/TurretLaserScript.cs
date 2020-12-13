@@ -5,11 +5,11 @@ using UnityEngine;
 public class TurretLaserScript : MonoBehaviour
 {
     private CameraBounds boundObject;
-    public float laserSpeed = 17f;
+    public float laserSpeed = 10f;
 
     void Start()
     {
-        laserSpeed = 17f;
+        laserSpeed = 10f;
         boundObject = Camera.main.GetComponent<CameraBounds>();
     }
 

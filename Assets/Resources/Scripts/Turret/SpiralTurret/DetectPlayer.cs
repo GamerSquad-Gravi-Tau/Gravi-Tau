@@ -23,4 +23,12 @@ public class DetectPlayer : MonoBehaviour
             this.GetComponentInParent<TurretAISpria>().StartAttack = true;
         }
     }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.name == "PlayerShip")
+        {
+            this.GetComponentInParent<TurretAISpria>().StartAttack = false;
+        }
+    }
 }

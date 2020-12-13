@@ -83,7 +83,7 @@ public class SpaceStationHealth : MonoBehaviour
     {
         int R = GetRandomNumberForDrop();
 
-        if (R == 1 || R == 2 || R == 3 || R == 4)
+        if (R == 1 || R == 2 || R == 3 || R == 4 || R == 5 || R == 6 || R == 7 || R == 8)
         {
             GameObject DropBoost = Instantiate(Resources.Load("Prefabs/EnemyCoinDrop") as GameObject);
             DropBoost.transform.position = this.transform.position + new Vector3(-0.5f, 0f, 0f);

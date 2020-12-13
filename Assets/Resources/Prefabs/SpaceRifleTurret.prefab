@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7495281656734261002}
   - component: {fileID: 7495281656734260997}
   - component: {fileID: -3200086594580095221}
+  - component: {fileID: 7078287511868427182}
   m_Layer: 0
   m_Name: SpaceRifleTurret
   m_TagString: Enemy
@@ -156,6 +157,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fda4bee0ee1643c419673d0bd6185aac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DestroyThisGameObject: 0
+--- !u!50 &7078287511868427182
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7495281656734261006}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &7495281658051659443
 GameObject:
   m_ObjectHideFlags: 0

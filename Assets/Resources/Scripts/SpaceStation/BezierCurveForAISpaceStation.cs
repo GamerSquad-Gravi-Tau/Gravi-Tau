@@ -42,7 +42,6 @@ public class BezierCurveForAISpaceStation : MonoBehaviour
 
     private IEnumerator GoByTheRoute()
     {
-        //TParam += 0.000005f;
         TParam += Time.smoothDeltaTime * 0.0005f;
         SpaceStationPosition = Mathf.Pow(1 - TParam, 5) * Zero +
             5 * Mathf.Pow(1 - TParam, 4) * TParam * One +

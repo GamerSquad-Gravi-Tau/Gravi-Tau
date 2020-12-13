@@ -49,5 +49,10 @@ public class PlayerHealth : MonoBehaviour
         {
             health -= 10;
         }
+
+        if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Enemy(Clone)" || collision.gameObject.tag == "enemy")
+        {
+            health -= 10;
+        }
     }
 }

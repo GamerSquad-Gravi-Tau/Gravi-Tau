@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5870914591397615999}
   - component: {fileID: -4253682131024675058}
   - component: {fileID: -4151950283179705355}
+  - component: {fileID: 5481231313651761304}
   m_Layer: 0
   m_Name: SpaceAITurret
   m_TagString: Enemy
@@ -156,6 +157,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fda4bee0ee1643c419673d0bd6185aac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DestroyThisGameObject: 0
+--- !u!50 &5481231313651761304
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5870914591397615995}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &5870914591723165076
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,7 +254,7 @@ PrefabInstance:
     - target: {fileID: 7150003920498258060, guid: c3a1aa4575d082c45b1884949d8ef3e2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.5
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7150003920498258060, guid: c3a1aa4575d082c45b1884949d8ef3e2,
         type: 3}
@@ -316,7 +339,7 @@ PrefabInstance:
     - target: {fileID: 2136646765529674831, guid: 65143d10944bf344689aed1134295a94,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.5
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2136646765529674831, guid: 65143d10944bf344689aed1134295a94,
         type: 3}

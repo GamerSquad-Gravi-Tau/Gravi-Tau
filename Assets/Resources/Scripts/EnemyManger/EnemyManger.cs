@@ -21,72 +21,51 @@ public class EnemyManger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (DestoriedEnemyNumber == 5 && One == 1)
-        {
-            GameObject Player = GameObject.Find("PlayerShip");
-            GameObject UpdateWeapon = Instantiate(Resources.Load("Prefabs/Weapon_Drop") as GameObject);
-            UpdateWeapon.transform.position = Player.transform.position + new Vector3(5f, 0f, 0f);
-            One++;
-        }
+        //if (DestoriedEnemyNumber == 5 && One == 1)
+        //{
+        //    GameObject Player = GameObject.Find("PlayerShip");
+        //    GameObject UpdateWeapon = Instantiate(Resources.Load("Prefabs/Weapon_Drop") as GameObject);
+        //    UpdateWeapon.transform.position = Player.transform.position + new Vector3(5f, 0f, 0f);
+        //    One++;
+        //}
 
-        if (DestoriedEnemyNumber == 20 && One == 2)
-        {
-            GameObject Player = GameObject.Find("PlayerShip");
-            GameObject UpdateWeapon = Instantiate(Resources.Load("Prefabs/Weapon_Drop") as GameObject);
-            UpdateWeapon.transform.position = Player.transform.position + new Vector3(5f, 0f, 0f);
-            One++;
-        }
+        //if (DestoriedEnemyNumber == 20 && One == 2)
+        //{
+        //    GameObject Player = GameObject.Find("PlayerShip");
+        //    GameObject UpdateWeapon = Instantiate(Resources.Load("Prefabs/Weapon_Drop") as GameObject);
+        //    UpdateWeapon.transform.position = Player.transform.position + new Vector3(5f, 0f, 0f);
+        //    One++;
+        //}
 
-        if (DestoriedEnemyNumber == 50 && One == 3)
-        {
-            GameObject Player = GameObject.Find("PlayerShip");
-            GameObject UpdateWeapon = Instantiate(Resources.Load("Prefabs/Weapon_Drop") as GameObject);
-            UpdateWeapon.transform.position = Player.transform.position + new Vector3(0f, 3f, 0f);
-            One++;
-        }
+        //if (DestoriedEnemyNumber == 50 && One == 3)
+        //{
+        //    GameObject Player = GameObject.Find("PlayerShip");
+        //    GameObject UpdateWeapon = Instantiate(Resources.Load("Prefabs/Weapon_Drop") as GameObject);
+        //    UpdateWeapon.transform.position = Player.transform.position + new Vector3(0f, 3f, 0f);
+        //    One++;
+        //}
 
-        if (DestoriedEnemyNumber == 100 && One == 4)
-        {
-            GameObject Player = GameObject.Find("PlayerShip");
-            GameObject UpdateWeapon = Instantiate(Resources.Load("Prefabs/Weapon_Drop") as GameObject);
-            UpdateWeapon.transform.position = Player.transform.position + new Vector3(0f, 3f, 0f);
-            One++;
-        }
+        //if (DestoriedEnemyNumber == 100 && One == 4)
+        //{
+        //    GameObject Player = GameObject.Find("PlayerShip");
+        //    GameObject UpdateWeapon = Instantiate(Resources.Load("Prefabs/Weapon_Drop") as GameObject);
+        //    UpdateWeapon.transform.position = Player.transform.position + new Vector3(0f, 3f, 0f);
+        //    One++;
+        //}
 
-        if (DestoriedEnemyNumber >= 30 && OneBoss == 0)
+        if (DestoriedEnemyNumber >= 20 && OneBoss == 0)
         {
             GameObject NewBoss = Instantiate(Resources.Load("Prefabs/SmallBoss/SmallBoss") as GameObject);
             NewBoss.transform.position = new Vector3(40, 0, 0);
             OneBoss++;
         }
 
-        if (Input.GetKeyDown("c") && CheatMode == 0)
-        {
-            CheatMode = 1;
-        }
 
-        if (Input.GetKeyDown("h") && CheatMode == 1)
+        if (DestoriedEnemyNumber >= 40 && OneBoss == 1)
         {
-            CheatMode = 2;
-        }
-
-        if (Input.GetKeyDown("e") && CheatMode == 2)
-        {
-            CheatMode = 3;
-        }
-
-        if (Input.GetKeyDown("a") && CheatMode == 3)
-        {
-            CheatMode = 4;
-        }
-
-        if (Input.GetKeyDown("t") && CheatMode == 4)
-        {
-            GameObject Player;
-            Player = GameObject.Find("PlayerShip");
-            Player.GetComponent<PlayerHealth>().health += 1000;
-
-            CheatMode = 5;
+            GameObject NewBoss = Instantiate(Resources.Load("Prefabs/FinalBoss/FinalBoss") as GameObject);
+            NewBoss.transform.position = new Vector3(40, 0, 0);
+            OneBoss++;
         }
     }
 
@@ -190,8 +169,15 @@ public class EnemyManger : MonoBehaviour
 
     private Vector3 GetRandomPosition()
     {
+        //X: 35 to 45
+        //Y: 4 to -4
         Vector3 V = Random.insideUnitCircle * 280;
         V.z = 0;
+        while ((V.x <= 45 && V.x >= 35) && (V.y <= 4 && V.y >= -4))
+        {
+            V = Random.insideUnitCircle * 280;
+            Debug.Log("New Random Vector3 In EnemyManger GetRandomPosition()");
+        }
         return V;
     }
 }

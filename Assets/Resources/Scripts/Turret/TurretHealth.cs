@@ -62,34 +62,13 @@ public class TurretHealth : MonoBehaviour
         healthBarBacking.position = transform.position + new Vector3(0f,healthbarDisplacement,0f);
     }
 
-    //private void checkMyHealth()
-    //{
-    //    if (MyHealth <= 0)
-    //    {
-    //        ScoreScript.IncScore(150);
-    //        if (RightHealth)
-    //        {
-    //            this.gameObject.GetComponentInParent<SpaceStationBehavior>().RightTurretDead = true;
-    //        }
-    //        else
-    //        {
-    //            this.gameObject.GetComponentInParent<SpaceStationBehavior>().LeftTurretDead = true;
-    //        }
-
-    //        //FivePercentDropBoost();
-    //        //TenPercentDropCoin();
-    //        //DropHealth();
-
-    //        Destroy(this.gameObject);
-    //    }
-    //}
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "shot(Clone)" || collision.gameObject.name == "shot")
-        {
-            MyHealth -= 10;
-        }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        MyHealth -= (damage - 10);
     }
 
     private void FivePercentDropBoost()
@@ -107,7 +86,7 @@ public class TurretHealth : MonoBehaviour
     {
         int R = GetRandomNumberForDrop();
 
-        if (R == 1 || R == 2 || R == 3 || R == 4)
+        if (R == 1 || R == 2 || R == 3 || R == 4 || R == 5 || R == 6 || R == 7 || R == 8)
         {
             GameObject DropBoost = Instantiate(Resources.Load("Prefabs/EnemyCoinDrop") as GameObject);
             DropBoost.transform.position = this.transform.position + new Vector3(-0.5f, 0f, 0f);

@@ -31,7 +31,13 @@ public class BlackHoleDamagePlayer : MonoBehaviour
 
         if (collision.gameObject.tag == "Enemy")
         {
-            //collision.gameObject.GetComponent<EnemyInBlackHole>().DestroyThisGameObject = true;
+            //Debug.Log("Set true in Enter");
+            EnemyInBlackHole E = collision.GetComponent<EnemyInBlackHole>();
+            if (E != null)
+            {
+                //Debug.Log("Set true in Enter done");
+                E.DestroyThisGameObject = true;
+            }
         }
     }
 
@@ -51,10 +57,15 @@ public class BlackHoleDamagePlayer : MonoBehaviour
             }
         }
 
-
         if (collision.gameObject.tag == "Enemy")
         {
-            //collision.gameObject.GetComponent<EnemyInBlackHole>().DestroyThisGameObject = true;
+            //Debug.Log("Set true in Stay");
+            EnemyInBlackHole E = collision.GetComponent<EnemyInBlackHole>();
+            if (E != null)
+            {
+                //Debug.Log("Set true in Stay Done");
+                E.DestroyThisGameObject = true;
+            }
         }
     }
 

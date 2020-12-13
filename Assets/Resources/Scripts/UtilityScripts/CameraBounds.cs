@@ -7,6 +7,7 @@ public class CameraBounds : MonoBehaviour
     private Camera mCamera;
     private Bounds currentWorldBounds; 
     private float smallestSize;
+
     // Start is called before the first frame update
     void Awake()
     {

@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class SmallBossSpiralShooter : MonoBehaviour
 {
-    //EnemyManger ++
     GameObject Player;
 
     public bool StartAttack = false;
     public bool Right;
     private float Angle = 0f;
     private int ModeNum = 0;
-    public int MyHealth = 50;
 
     private float ShootTimeStamp;
     private float ShootShortInterval = 0.005f;
@@ -27,7 +25,7 @@ public class SmallBossSpiralShooter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (MyHealth <= 0)
+        if (this.GetComponent<SmallBossTurretHealth>().MyHealth <= 0)
         {
             if (Right)
             {
@@ -138,13 +136,13 @@ public class SmallBossSpiralShooter : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "shot" || collision.gameObject.name == "shot(Clone)")
-        {
-            if (StartAttack)
-            {
-                MyHealth -= 2;
-            }
-        }
+        //if (collision.gameObject.name == "shot" || collision.gameObject.name == "shot(Clone)")
+        //{
+        //    if (StartAttack)
+        //    {
+        //        MyHealth -= 2;
+        //    }
+        //}
     }
 
     private void FivePercentDropBoost()
@@ -162,7 +160,7 @@ public class SmallBossSpiralShooter : MonoBehaviour
     {
         int R = GetRandomNumberForDrop();
 
-        if (R == 1 || R == 2 || R == 3 || R == 4)
+        if (R == 1 || R == 2 || R == 3 || R == 4 || R == 5 || R == 6 || R == 7 || R == 8)
         {
             GameObject DropBoost = Instantiate(Resources.Load("Prefabs/EnemyCoinDrop") as GameObject);
             DropBoost.transform.position = this.transform.position + new Vector3(-0.5f, 0f, 0f);

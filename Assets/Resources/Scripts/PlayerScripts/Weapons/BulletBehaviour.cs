@@ -25,6 +25,9 @@ public class BulletBehaviour : MonoBehaviour
         EnemyHealth e = collision.GetComponent<EnemyHealth>();
         BossHealth s = collision.GetComponent<BossHealth>();
         AsteriodMovement a = collision.GetComponent<AsteriodMovement>();
+        TurretHealth t = collision.GetComponent<TurretHealth>();
+        SmallBossTurretHealth st = collision.GetComponent<SmallBossTurretHealth>();
+        FinalBossObjectHealthBar FB = collision.GetComponent<FinalBossObjectHealthBar>();
         if (e != null)
         {
             e.TakeDamage(damage);
@@ -40,6 +43,21 @@ public class BulletBehaviour : MonoBehaviour
             a.TakeDamage(damage);
             Destroy(gameObject);
         }
+        if (t != null)
+        {
+            t.TakeDamage(damage);
+            Destroy(this.gameObject);
+        }
+        if (st != null)
+        {
+            st.TakeDamage(damage);
+            Destroy(this.gameObject);
+        }
+        if (FB != null)
+        {
+            FB.TakeDamage(damage);
+            Destroy(this.gameObject);
+        }
         if (collision.gameObject.tag == "Enemy")
         {
             Destroy(this.gameObject);
@@ -53,6 +71,10 @@ public class BulletBehaviour : MonoBehaviour
             Destroy(this.gameObject);
         }
         if (collision.gameObject.tag == "SurfaceCollider")
+        {
+            Destroy(this.gameObject);
+        }
+        if (collision.gameObject.tag == "FinalBoss")
         {
             Destroy(this.gameObject);
         }

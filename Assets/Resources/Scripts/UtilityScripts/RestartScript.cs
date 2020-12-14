@@ -9,5 +9,6 @@ public class RestartScript : MonoBehaviour
     public void onClick()
     {
         SceneManager.LoadScene(1);
+        CoinScript.restartCoins();
     }
 }

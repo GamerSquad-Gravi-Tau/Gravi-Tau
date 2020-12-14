@@ -8,6 +8,7 @@ public class EnemyCoinDrop : MonoBehaviour
     {
         if (collision.gameObject.name == "PlayerShip")
         {
+            DropMessage.setMessage("Looted The Pirates!", Color.yellow);
             CoinScript.addCoins(10);
             Destroy(this.gameObject);
         }

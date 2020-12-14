@@ -21,4 +21,9 @@ public class CoinScript : MonoBehaviour
     {
         PlayerWallet += coins;
     }
+
+    public static void restartCoins()
+    {
+        PlayerWallet = 0;
+    }
 }

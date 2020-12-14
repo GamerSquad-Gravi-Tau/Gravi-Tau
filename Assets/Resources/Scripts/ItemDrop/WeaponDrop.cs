@@ -21,6 +21,7 @@ public class WeaponDrop : MonoBehaviour
     {
         if (collision.gameObject.name == "PlayerShip")
         {
+            DropMessage.setMessage("Weapons Have Upgraded!", Color.blue);
             Player.GetComponent<PlayerWeaponsController>().WeaponMode += 1;
             Destroy(this.gameObject);
         }

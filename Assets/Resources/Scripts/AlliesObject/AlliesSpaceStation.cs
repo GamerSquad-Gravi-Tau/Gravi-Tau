@@ -31,6 +31,7 @@ public class AlliesSpaceStation : MonoBehaviour
     {
         if (collision.gameObject.name == "PlayerShip")
         {
+            DropMessage.setMessage("Replenishing Health!", Color.green);
             if (OneSecond() && HealthBag > 0)
             {
                 AudioSource.PlayClipAtPoint(HealSoundEffect, transform.position, 2f);

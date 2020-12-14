@@ -23,6 +23,7 @@ public class EnemyHealthDrop : MonoBehaviour
     {
         if (collision.gameObject.name == "PlayerShip")
         {
+            DropMessage.setMessage("Recieved Health Boost!", Color.green);
             AudioSource.PlayClipAtPoint(HealSoundEffect, transform.position, 2f);
             FindPlayer.GetComponent<PlayerHealth>().health += 20;
             Destroy(this.gameObject);

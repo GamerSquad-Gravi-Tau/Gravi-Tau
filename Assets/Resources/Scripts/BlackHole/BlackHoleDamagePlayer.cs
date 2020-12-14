@@ -45,6 +45,7 @@ public class BlackHoleDamagePlayer : MonoBehaviour
     {
         if (collision.gameObject.name == "PlayerShip")
         {
+            DropMessage.setMessage("You Are Lost To The Darkness", Color.red);
             if (OneSecond())
             {
                 Player.GetComponent<PlayerHealth>().health -= 10;

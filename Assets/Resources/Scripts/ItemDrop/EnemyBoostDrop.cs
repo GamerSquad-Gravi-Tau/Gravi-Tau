@@ -21,6 +21,8 @@ public class EnemyBoostDrop : MonoBehaviour
     {
         if (collision.gameObject.name == "PlayerShip")
         {
+
+            DropMessage.setMessage("Granted Temporary Boost Enhancement!", Color.yellow);
             FindPlayer.GetComponent<PlayerMovement>().boostDelay = 0.3f;
             FindPlayer.GetComponent<PlayerMovement>().boostSpeed = 9f;
             FindPlayer.GetComponent<PlayerMovement>().boostChangeTimeStamp = Time.realtimeSinceStartup;

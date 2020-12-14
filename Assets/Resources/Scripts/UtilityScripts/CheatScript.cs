@@ -9,7 +9,11 @@ public class CheatScript : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.C) && Input.GetKey(KeyCode.H) && Input.GetKeyDown(KeyCode.Return)){
             Debug.Log("Cheat Activated.");
-            transform.GetComponent<PlayerWeaponsController>().WeaponMode += 1;
+            int curMode = transform.GetComponent<PlayerWeaponsController>().WeaponMode; 
+            if (curMode<4){
+                curMode++;
+            }
+            transform.GetComponent<PlayerWeaponsController>().WeaponMode = curMode;
         }
     }
 }

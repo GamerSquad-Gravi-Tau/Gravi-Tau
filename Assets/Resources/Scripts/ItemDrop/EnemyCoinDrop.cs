@@ -8,9 +8,7 @@ public class EnemyCoinDrop : MonoBehaviour
     {
         if (collision.gameObject.name == "PlayerShip")
         {
-            GameObject FindPlayer;
-            FindPlayer = GameObject.Find("PlayerShip");
-            FindPlayer.GetComponent<PlayerCoin>().PlayerWallet += 10;
+            CoinScript.addCoins(10);
             Destroy(this.gameObject);
         }
     }

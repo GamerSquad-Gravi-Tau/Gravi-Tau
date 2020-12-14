@@ -23,7 +23,7 @@ public class CameraBounds : MonoBehaviour
     }
 
     private void UpdateCameraBounds(){
-        float vert = smallestSize*5f;
+        float vert = smallestSize*2f;
         float hori = vert * mCamera.aspect;
 
         Vector3 c = mCamera.transform.position;

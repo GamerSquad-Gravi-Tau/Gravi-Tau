@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyManger : MonoBehaviour
 {
@@ -8,6 +9,10 @@ public class EnemyManger : MonoBehaviour
     private int CheatMode = 0;
     public int DestoriedEnemyNumber;
     private int One = 1;
+
+    public bool destroyedBoss = false;
+    public Text destroyedText;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -53,7 +58,7 @@ public class EnemyManger : MonoBehaviour
         //    One++;
         //}
 
-        if (DestoriedEnemyNumber >= 20 && OneBoss == 0)
+        if (DestoriedEnemyNumber >= 30 && OneBoss == 0)
         {
             GameObject NewBoss = Instantiate(Resources.Load("Prefabs/SmallBoss/SmallBoss") as GameObject);
             NewBoss.transform.position = new Vector3(40, 0, 0);
@@ -61,12 +66,25 @@ public class EnemyManger : MonoBehaviour
         }
 
 
-        if (DestoriedEnemyNumber >= 40 && OneBoss == 1)
+        if (DestoriedEnemyNumber >= 50 && OneBoss == 1)
         {
             GameObject NewBoss = Instantiate(Resources.Load("Prefabs/FinalBoss/FinalBoss") as GameObject);
             NewBoss.transform.position = new Vector3(40, 0, 0);
             OneBoss++;
         }
+        updateKillCount();
+    }
+
+    private void updateKillCount(){
+        if (DestoriedEnemyNumber< 30){
+            destroyedText.text = "Destroyed Enemies: "+ DestoriedEnemyNumber +"/30";
+        }
+        else if(!destroyedBoss){
+            destroyedText.text = "Destroyed Enemies: "+ DestoriedEnemyNumber+"\nBoss has spawned!";
+        }else{
+            destroyedText.text = "Destroyed Enemies: "+ DestoriedEnemyNumber+"\nBoss was defeated!";
+        }
+        
     }
 
     private void SpawnSingleEnemy()

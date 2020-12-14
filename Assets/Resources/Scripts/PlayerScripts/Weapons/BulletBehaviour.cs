@@ -10,7 +10,7 @@ public class BulletBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        damage = 20;
+        damage = 10;
         rb.velocity = (Vector3)PlayerMovement.retVel() + transform.up * speed;
     }
 
@@ -28,6 +28,7 @@ public class BulletBehaviour : MonoBehaviour
         TurretHealth t = collision.GetComponent<TurretHealth>();
         SpaceStationHealth sth = collision.GetComponent<SpaceStationHealth>();
         SmallBossTurretHealth st = collision.GetComponent<SmallBossTurretHealth>();
+        SmallBossBody sbb = collision.GetComponent<SmallBossBody>();
         FinalBossObjectHealthBar FB = collision.GetComponent<FinalBossObjectHealthBar>();
         if (e != null)
         {
@@ -57,6 +58,10 @@ public class BulletBehaviour : MonoBehaviour
         if (st != null)
         {
             st.TakeDamage(damage);
+            Destroy(this.gameObject);
+        }
+        if (sbb != null){
+            sbb.TakeDamage(damage);
             Destroy(this.gameObject);
         }
         if (FB != null)

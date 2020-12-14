@@ -66,6 +66,7 @@ public class HomingBehaviour : MonoBehaviour
         TurretHealth t = collision.GetComponent<TurretHealth>();
         SpaceStationHealth sth = collision.GetComponent<SpaceStationHealth>();
         SmallBossTurretHealth st = collision.GetComponent<SmallBossTurretHealth>();
+        SmallBossBody sbb = collision.GetComponent<SmallBossBody>();
         FinalBossObjectHealthBar FB = collision.GetComponent<FinalBossObjectHealthBar>();
         if (e != null)
         {
@@ -95,6 +96,10 @@ public class HomingBehaviour : MonoBehaviour
         if (st != null)
         {
             st.TakeDamage(damage);
+            Destroy(this.gameObject);
+        }
+        if (sbb != null){
+            sbb.TakeDamage(damage);
             Destroy(this.gameObject);
         }
         if (FB != null)

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7078755620681714983}
   m_Layer: 0
   m_Name: hitbox
-  m_TagString: Untagged
+  m_TagString: playerWeapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 8598031177495744272}
   m_Layer: 0
   m_Name: Missile
-  m_TagString: Untagged
+  m_TagString: playerWeapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

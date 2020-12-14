@@ -11,5 +11,8 @@ public class SatellitCollider : MonoBehaviour
             //Debug.Log("Destory");
             Destroy(this.transform.parent.gameObject);
         }
+        if(collision.gameObject.tag == "playerWeapon"){
+            Destroy(this.transform.parent.gameObject);
+        }
     }
 }

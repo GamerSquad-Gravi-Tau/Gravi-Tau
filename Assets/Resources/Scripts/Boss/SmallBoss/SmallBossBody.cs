@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SmallBossBody : MonoBehaviour
 {
-    public int SmallBossHealth = 200;
+    public int SmallBossHealth = 300;
 
     public float healthbarDisplacement = 0.3f;
     private Transform healthBar;
@@ -26,6 +26,13 @@ public class SmallBossBody : MonoBehaviour
     void Update()
     {
         updateHealthBar();
+        if(SmallBossHealth<=0){
+            GameObject FindManger;
+            FindManger = GameObject.Find("EnemyManger");
+            FindManger.GetComponent<EnemyManger>().DestoriedEnemyNumber += 1;
+            FindManger.GetComponent<EnemyManger>().destroyedBoss = true; 
+            Destroy(this.gameObject);
+        }
     }
 
     private void updateHealthBar(){

@@ -12,6 +12,7 @@ TagManager:
   - BlackHoleSurfaceCollider
   - WorldBound
   - FinalBoss
+  - playerWeapon
   layers:
   - Default
   - TransparentFX

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5595758833337148794}
   m_Layer: 0
   m_Name: shot
-  m_TagString: Untagged
+  m_TagString: playerWeapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -118,8 +118,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 7638298066930929221}
-  speed: 7
-  damage: 0
+  speed: 9
+  damage: 10
 --- !u!70 &5595758833337148794
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -134,5 +134,5 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.125}
-  m_Size: {x: 0.15, y: 0.4}
+  m_Size: {x: 0.3, y: 0.5}
   m_Direction: 0

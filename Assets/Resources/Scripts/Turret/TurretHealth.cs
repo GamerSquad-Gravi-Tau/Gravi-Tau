@@ -68,7 +68,7 @@ public class TurretHealth : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        MyHealth -= (damage - 10);
+        MyHealth -= (damage);
     }
 
     private void FivePercentDropBoost()

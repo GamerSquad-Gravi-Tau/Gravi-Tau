@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SmallBossBody : MonoBehaviour
 {
-    public int SmallBossHealth = 25;
+    public int SmallBossHealth = 200;
 
     public float healthbarDisplacement = 0.3f;
     private Transform healthBar;
@@ -36,14 +36,8 @@ public class SmallBossBody : MonoBehaviour
         healthBarBacking.rotation = Quaternion.Euler(0f,0f,0f);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void TakeDamage(int damage)
     {
-        if (collision.gameObject.name == "shot" || collision.gameObject.name == "shot(Clone)")
-        {
-            if (this.GetComponentInParent<SmallBossBehavoir>().transform.childCount <= 2)
-            {
-                SmallBossHealth--;
-            }
-        }
+        SmallBossHealth -= (damage);
     }
 }

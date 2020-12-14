@@ -60,12 +60,17 @@ public class SpaceStationHealth : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    // private void OnTriggerEnter2D(Collider2D collision)
+    // {
+    //     if (collision.gameObject.name == "shot" || collision.gameObject.name == "shot(Clone)")
+    //     {
+    //         health -= 10;
+    //     }
+    // }
+
+    public void TakeDamage(int damage)
     {
-        if (collision.gameObject.name == "shot" || collision.gameObject.name == "shot(Clone)")
-        {
-            health -= 10;
-        }
+        health -= (damage);
     }
 
     private void FivePercentDropBoost()

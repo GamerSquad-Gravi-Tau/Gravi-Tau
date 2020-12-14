@@ -26,6 +26,7 @@ public class BulletBehaviour : MonoBehaviour
         BossHealth s = collision.GetComponent<BossHealth>();
         AsteriodMovement a = collision.GetComponent<AsteriodMovement>();
         TurretHealth t = collision.GetComponent<TurretHealth>();
+        SpaceStationHealth sth = collision.GetComponent<SpaceStationHealth>();
         SmallBossTurretHealth st = collision.GetComponent<SmallBossTurretHealth>();
         FinalBossObjectHealthBar FB = collision.GetComponent<FinalBossObjectHealthBar>();
         if (e != null)
@@ -46,6 +47,11 @@ public class BulletBehaviour : MonoBehaviour
         if (t != null)
         {
             t.TakeDamage(damage);
+            Destroy(this.gameObject);
+        }
+        if (sth != null)
+        {
+            sth.TakeDamage(damage);
             Destroy(this.gameObject);
         }
         if (st != null)

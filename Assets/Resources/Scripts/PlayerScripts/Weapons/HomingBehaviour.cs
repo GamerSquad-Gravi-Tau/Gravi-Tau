@@ -62,6 +62,11 @@ public class HomingBehaviour : MonoBehaviour
     public void collideTarget(Collider2D collision){
         EnemyHealth e = collision.GetComponent<EnemyHealth>();
         BossHealth s = collision.GetComponent<BossHealth>();
+        AsteriodMovement a = collision.GetComponent<AsteriodMovement>();
+        TurretHealth t = collision.GetComponent<TurretHealth>();
+        SpaceStationHealth sth = collision.GetComponent<SpaceStationHealth>();
+        SmallBossTurretHealth st = collision.GetComponent<SmallBossTurretHealth>();
+        FinalBossObjectHealthBar FB = collision.GetComponent<FinalBossObjectHealthBar>();
         if (e != null)
         {
             e.TakeDamage(damage);
@@ -72,11 +77,48 @@ public class HomingBehaviour : MonoBehaviour
             s.TakeDamage(damage);
             Destroy(gameObject);
         }
+        if (a != null)
+        {
+            a.TakeDamage(damage);
+            Destroy(gameObject);
+        }
+        if (t != null)
+        {
+            t.TakeDamage(damage);
+            Destroy(this.gameObject);
+        }
+        if (sth != null)
+        {
+            sth.TakeDamage(damage);
+            Destroy(this.gameObject);
+        }
+        if (st != null)
+        {
+            st.TakeDamage(damage);
+            Destroy(this.gameObject);
+        }
+        if (FB != null)
+        {
+            FB.TakeDamage(damage);
+            Destroy(this.gameObject);
+        }
         if (collision.gameObject.tag == "Enemy")
         {
             Destroy(this.gameObject);
         }
         if (collision.gameObject.tag == "SurfaceCollider")
+        {
+            Destroy(this.gameObject);
+        }
+        if (collision.gameObject.tag == "BlackHoleSurfaceCollider")
+        {
+            Destroy(this.gameObject);
+        }
+        if (collision.gameObject.tag == "SurfaceCollider")
+        {
+            Destroy(this.gameObject);
+        }
+        if (collision.gameObject.tag == "FinalBoss")
         {
             Destroy(this.gameObject);
         }

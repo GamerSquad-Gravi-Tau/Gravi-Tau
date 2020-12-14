@@ -93,7 +93,6 @@ GameObject:
   - component: {fileID: 4061125479529590864}
   - component: {fileID: 4894074562385220361}
   - component: {fileID: 2569668630123362183}
-  - component: {fileID: 7628743415960020944}
   - component: {fileID: 2155664864705737241}
   - component: {fileID: 1293935315884815628}
   m_Layer: 0
@@ -174,22 +173,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 0
   healthbarDisplacement: 0.3
---- !u!70 &7628743415960020944
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4061125479529590866}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.16, y: 0.35}
-  m_Direction: 0
 --- !u!61 &2155664864705737241
 BoxCollider2D:
   m_ObjectHideFlags: 0

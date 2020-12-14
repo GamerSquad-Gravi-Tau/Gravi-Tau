@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class QuitScript : MonoBehaviour
 {
-    // Update is called once per frame
-    void Update()
+    // Start is called before the first frame update
+    public void onClick()
     {
-        if(Input.GetKey(KeyCode.Escape)){
-            Application.Quit();
-        }
+        Application.Quit();
     }
 }

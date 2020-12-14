@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
-    
+    public bool inBlackHole=false;
+
     private Vector2 currentVelocity = new Vector2(0f,0f);
     private static Vector2 currVel;
     private float acceleration = 7f;
@@ -62,16 +63,18 @@ public class PlayerMovement : MonoBehaviour
             recoiled = false;
         }
 
-        if(!recoiled){
-            accelerate();
-        }else{
-            recoilTime+=Time.smoothDeltaTime;
-        }
-
-        
         Vector2 boostVel = Vector2.zero;
-        if (allowBoost){
-            boostVel = boostUpdate(faceVector);
+        if(!inBlackHole){
+            if(!recoiled){
+                accelerate();
+            }else{
+                recoilTime+=Time.smoothDeltaTime;
+            }
+
+    
+            if (allowBoost){
+                boostVel = boostUpdate(faceVector);
+            }
         }
         
         //transform!

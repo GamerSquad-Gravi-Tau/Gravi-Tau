@@ -18,7 +18,7 @@ public class PlayerWeaponsController : MonoBehaviour
 
     private float[] timeBetweenHoming = {3f,2.5f,2f,1.5f,1f,1f};
     private float homingCooldown = 10f;
-    private float[] missileDamageMult = {1f,1.3f,1.7f,2f,2.5f,2.5f};
+    private float[] missileDamageMult = {1f,1.3f,1.6f,1.9f,2.2f,2.2f};
 
     public bool enableFire=true;
 

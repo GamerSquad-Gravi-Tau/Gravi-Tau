@@ -4453,8 +4453,7 @@ GameObject:
   m_Component:
   - component: {fileID: 916705404}
   - component: {fileID: 916705405}
-  - component: {fileID: 916705406}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Nebula Blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4525,25 +4524,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &916705406
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 916705403}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b10e542ea860f4df9ba21e50af2831a3, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &921038485
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6083,6 +6063,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DestoriedEnemyNumber: 0
+  destroyedBoss: 0
   destroyedText: {fileID: 931400399}
 --- !u!1001 &1186521550
 PrefabInstance:
@@ -6921,6 +6902,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6f32455ff9ce854a94c9c2cf19c64dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inBlackHole: 0
   tempShipSpeed: 0
   boundsWarning: {fileID: 1003349558}
   outOfBounds: 0

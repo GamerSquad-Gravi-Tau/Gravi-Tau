@@ -26,37 +26,37 @@ public class EnemyManger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (DestoriedEnemyNumber == 5 && One == 1)
-        //{
-        //    GameObject Player = GameObject.Find("PlayerShip");
-        //    GameObject UpdateWeapon = Instantiate(Resources.Load("Prefabs/Weapon_Drop") as GameObject);
-        //    UpdateWeapon.transform.position = Player.transform.position + new Vector3(5f, 0f, 0f);
-        //    One++;
-        //}
+        if (DestoriedEnemyNumber == 5 && One == 1)
+        {
+           GameObject Player = GameObject.Find("PlayerShip");
+           GameObject UpdateWeapon = Instantiate(Resources.Load("Prefabs/Weapon_Drop") as GameObject);
+           UpdateWeapon.transform.position = Player.transform.position + new Vector3(5f, 0f, 0f);
+           One++;
+        }
 
-        //if (DestoriedEnemyNumber == 20 && One == 2)
-        //{
-        //    GameObject Player = GameObject.Find("PlayerShip");
-        //    GameObject UpdateWeapon = Instantiate(Resources.Load("Prefabs/Weapon_Drop") as GameObject);
-        //    UpdateWeapon.transform.position = Player.transform.position + new Vector3(5f, 0f, 0f);
-        //    One++;
-        //}
+        if (DestoriedEnemyNumber == 20 && One == 2)
+        {
+           GameObject Player = GameObject.Find("PlayerShip");
+           GameObject UpdateWeapon = Instantiate(Resources.Load("Prefabs/Weapon_Drop") as GameObject);
+           UpdateWeapon.transform.position = Player.transform.position + new Vector3(5f, 0f, 0f);
+           One++;
+        }
 
-        //if (DestoriedEnemyNumber == 50 && One == 3)
-        //{
-        //    GameObject Player = GameObject.Find("PlayerShip");
-        //    GameObject UpdateWeapon = Instantiate(Resources.Load("Prefabs/Weapon_Drop") as GameObject);
-        //    UpdateWeapon.transform.position = Player.transform.position + new Vector3(0f, 3f, 0f);
-        //    One++;
-        //}
+        if (DestoriedEnemyNumber == 50 && One == 3)
+        {
+           GameObject Player = GameObject.Find("PlayerShip");
+           GameObject UpdateWeapon = Instantiate(Resources.Load("Prefabs/Weapon_Drop") as GameObject);
+           UpdateWeapon.transform.position = Player.transform.position + new Vector3(0f, 3f, 0f);
+           One++;
+        }
 
-        //if (DestoriedEnemyNumber == 100 && One == 4)
-        //{
-        //    GameObject Player = GameObject.Find("PlayerShip");
-        //    GameObject UpdateWeapon = Instantiate(Resources.Load("Prefabs/Weapon_Drop") as GameObject);
-        //    UpdateWeapon.transform.position = Player.transform.position + new Vector3(0f, 3f, 0f);
-        //    One++;
-        //}
+        if (DestoriedEnemyNumber == 100 && One == 4)
+        {
+           GameObject Player = GameObject.Find("PlayerShip");
+           GameObject UpdateWeapon = Instantiate(Resources.Load("Prefabs/Weapon_Drop") as GameObject);
+           UpdateWeapon.transform.position = Player.transform.position + new Vector3(0f, 3f, 0f);
+           One++;
+        }
 
         if (DestoriedEnemyNumber >= 30 && OneBoss == 0)
         {
